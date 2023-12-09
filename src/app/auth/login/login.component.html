@@ -1,1 +1,28 @@
-<p>login works!</p>
+
+<main>
+    <form [formGroup]="loginForm">
+        <h1>Log In here</h1>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex: moi@example.com" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email')!.hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')!.hasError('email')">
+                Email is invalid
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input  [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="loginForm.get('password')!.hasError('required')">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">
+            LOGIN
+        </button>
+        <p class="text-color">Don't Have an Account? <a routerLink="/register" class="text-color bold">Register</a></p>
+    </form>
+</main>
