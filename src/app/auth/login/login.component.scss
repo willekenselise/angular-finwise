@@ -1,0 +1,31 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    button,
+    mat-form-field {
+        width: -webkit-fill-available;
+    }
+    mat-form-field {
+        margin-bottom: 15px;
+    }
+
+    button {
+        margin: 5px 0;
+
+        &[mat-button] {
+            width: auto;
+        }
+    }
+}

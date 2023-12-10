@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "finwise-84f9e": {
+      "hosting": {
+        "angular-finwise": [
+          "finwise-84f9e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "finwise-84f9e"
+  }
+}
