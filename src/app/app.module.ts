@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { PublicComponent } from './public/public.component';
 import { HeaderComponent } from './home/header/header.component';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HeaderComponent } from './home/header/header.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
+    PublicComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
