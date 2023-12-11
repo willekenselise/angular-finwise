@@ -1,0 +1,36 @@
+<button (click)="showAddExpenseForm()">Ajouter une dépense</button>
+<form (submit)="addExpense()" #expenseForm="ngForm">
+  <form [formGroup]="expenseForm" (submit)="addExpense()">
+  <label>Description: <input type="text" name="description" ngModel required></label>
+  <label>Montant: <input type="number" name="amount" ngModel required></label>
+  <label>Date: <input type="date" name="date" ngModel required></label>
+  <label>User ID: <input type="text" name="userId" ngModel required></label>
+  <button type="submit">Ajouter</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>User ID</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let expense of expenses">
+      <td>{{ expense.id }}</td>
+      <td>{{ expense.description }}</td>
+      <td>{{ expense.amount }}</td>
+      <td>{{ expense.date | date: 'short' }}</td>
+      <td>{{ expense.userId }}</td>
+      <td>
+        <!-- Ajoutez des boutons d'action pour chaque expense (update, delete) -->
+        <button (click)="editExpense(expense)">Edit</button>
+        <button (click)="deleteExpense(expense)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
