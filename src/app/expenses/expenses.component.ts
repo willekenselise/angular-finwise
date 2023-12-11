@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ExpensesService } from '../services/expenses.service';
 import { Expense } from '../models/expense';
-import { FormGroup, Validators, NonNullableFormBuilder, FormsModule } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-expenses',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.scss',
 })
 export class ExpensesComponent implements OnInit {
+  expenseForm!: FormGroup;
   expenses: Expense[] = [];
   showForm = false;
-  expenseForm!: FormGroup;
   userId: string | null = null;
 
   constructor(
     private expensesService: ExpensesService,
-    private formBuilder: NonNullableFormBuilder,
+    private formBuilder: FormBuilder,
     private fireAuth: AngularFireAuth 
   ) {}
 
@@ -36,6 +34,7 @@ export class ExpensesComponent implements OnInit {
       userId: [this.userId, Validators.required],
     });
   }
+  
 
   deleteExpense(expense: Expense): void {
     this.expensesService.deleteExpense(expense);
@@ -44,6 +43,7 @@ export class ExpensesComponent implements OnInit {
   addExpense(): void {
     if (this.expenseForm.valid) {
       const newExpense: Expense = {
+        id: '',
         description: this.expenseForm.value.description,
         amount: this.expenseForm.value.amount,
         date: this.expenseForm.value.date,
