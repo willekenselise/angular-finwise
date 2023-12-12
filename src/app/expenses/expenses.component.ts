@@ -7,6 +7,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-expenses',
+  // standalone: true,
+  // imports: [CommonModule],
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.scss',
 })
@@ -31,7 +33,6 @@ export class ExpensesComponent implements OnInit {
       description: ['', Validators.required],
       amount: [null, [Validators.required, Validators.min(0)]],
       date: [null, Validators.required],
-      userId: [this.userId, Validators.required],
     });
   }
   
