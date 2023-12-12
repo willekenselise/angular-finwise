@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import{ FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -15,20 +15,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 // Components
-import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login/login.component';
 import { PublicComponent } from './public/public.component';
-import { HeaderComponent } from './home/header/header.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    PublicComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent, RegisterComponent, HomeComponent, LoginComponent, PublicComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
