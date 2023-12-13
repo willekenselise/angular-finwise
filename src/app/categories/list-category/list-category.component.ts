@@ -28,4 +28,8 @@ export class ListCategoryComponent implements OnInit {
     this.router.navigate(['add-category']);
   }
 
+  deleteCategory(category: Category): void {
+    this.categoriesService.deleteCategory(category);
+  }
+
 }

@@ -34,4 +34,8 @@ export class CategoriesService {
     };
     return this.catagoriesCollection.add(newCategory).then(() => newCategory);
   }
+
+  deleteCategory(category: Category): Promise<void> {
+    return this.catagoriesCollection.doc(category.uid).delete();
+  }
 }
