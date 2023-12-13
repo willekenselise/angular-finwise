@@ -19,6 +19,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HeaderComponent } from './home/header/header.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HeaderComponent } from './home/header/header.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

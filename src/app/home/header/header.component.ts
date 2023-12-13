@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { NotifService } from '../../services/notif.service';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +15,18 @@ export class HeaderComponent implements OnInit{
   constructor(
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar,
+    private notifService: NotifService
+  ) {
+   }
   
   isAuthenticated: boolean = false;
 
   ngOnInit(){
-    this.authService.authStatusListener();
-    this.authService.currentAuthStatus.subscribe(authStatus => this.isAuthenticated = authStatus)
+    this.authService.currentAuthStatus.subscribe((isAuthenticated) => {
+      this.isAuthenticated = isAuthenticated;
+      console.log(this.isAuthenticated);
+    })
   }
 
   register() {
