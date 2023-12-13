@@ -25,6 +25,10 @@ export class CategoriesService {
     return this.categories;
   }
 
+  getCategoryById(categoryId: string): Observable<Category> {
+    return this.catagoriesCollection.doc<Category>(categoryId).valueChanges() as Observable<Category>;
+  }
+
   addCategory(category: Category): Promise<Category> {
     const newCategory: Category = {
       uid: this.catagoriesCollection.ref.doc().id,
@@ -37,5 +41,9 @@ export class CategoriesService {
 
   deleteCategory(category: Category): Promise<void> {
     return this.catagoriesCollection.doc(category.uid).delete();
+  }
+
+  updateCategory(category: Category): Promise<void> {
+    return this.catagoriesCollection.doc(category.uid).update(category);
   }
 }

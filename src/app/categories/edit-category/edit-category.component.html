@@ -1,0 +1,9 @@
+<div>
+    <h2>Edit Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="updateCategory()">
+      <label for="categoryName">Nom catégorie:</label>
+      <input type="text" id="categoryName" formControlName="name" required>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  

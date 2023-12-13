@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HeaderComponent } from './home/header/header.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
     HeaderComponent,
     ListCategoryComponent,
     AddCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@
     <li *ngFor="let category of categories">
       {{ category.name }}
       <button (click)="deleteCategory(category)">Delete</button>
+      <button (click)="navigateToEditCategory(category)">Edit</button>
     </li>
   </ul>
 </div>

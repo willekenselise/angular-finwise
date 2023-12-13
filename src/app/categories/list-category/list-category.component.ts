@@ -32,4 +32,7 @@ export class ListCategoryComponent implements OnInit {
     this.categoriesService.deleteCategory(category);
   }
 
+  navigateToEditCategory(category: Category): void {
+    this.router.navigate(['edit-category', category.uid]);
+  }
 }
