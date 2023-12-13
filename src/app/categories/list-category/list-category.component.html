@@ -1,5 +1,6 @@
 <div>
     <h2>Category List</h2>
+    <button (click)="navigateToAddCategory()">Ajouter une catégorie</button>
     <ul>
       <li *ngFor="let category of categories">
         {{ category.name }} 

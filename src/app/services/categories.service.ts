@@ -24,4 +24,14 @@ export class CategoriesService {
   getAllExpenses(): Observable<Category[]> {
     return this.categories;
   }
+
+  addCategory(category: Category): Promise<Category> {
+    const newCategory: Category = {
+      uid: this.catagoriesCollection.ref.doc().id,
+      name: category.name,
+      createdAt: category.createdAt,
+      updatedAt: category.updatedAt,
+    };
+    return this.catagoriesCollection.add(newCategory).then(() => newCategory);
+  }
 }
