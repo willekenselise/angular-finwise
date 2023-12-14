@@ -34,7 +34,7 @@ export class RegisterComponent {
     });
   }
 
-  register() {
+  signUp() {
     if (this.registerForm.value.password && this.registerForm.value.confirmPassword && this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
       this.snackBar.open('Passwords do not match', 'OK', { duration: 5000 });
       return;
@@ -44,7 +44,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.authService.SignUp({
+    this.authService.signUp({
       email: this.registerForm.value.email, 
       password: this.registerForm.value.password,
     }).pipe(
@@ -57,7 +57,7 @@ export class RegisterComponent {
         })
       )
     ).subscribe({
-      next: () => this.router.navigate(['/']),
+      next: () => this.router.navigate(['/profile']),
       error: error => {
         this.snackBar.open(error.message, 'OK', { duration: 5000 });
       }
