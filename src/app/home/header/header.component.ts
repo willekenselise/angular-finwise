@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -14,14 +13,20 @@ export class HeaderComponent implements OnInit{
   constructor(
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar,
+  ) {
+   }
   
   isAuthenticated: boolean = false;
 
   ngOnInit(){
-    this.authService.authStatusListener();
-    this.authService.currentAuthStatus.subscribe(authStatus => this.isAuthenticated = authStatus)
+    // this.authService.currentAuthStatus$.subscribe((isAuthenticated) => {
+    //   this.isAuthenticated = !!isAuthenticated;
+    //   console.log(this.isAuthenticated);
+    // })
+    this.authService.getUserState.subscribe((user) => {
+      this.isAuthenticated = !!user;
+    });
   }
 
   register() {
@@ -33,12 +38,6 @@ export class HeaderComponent implements OnInit{
   }
 
   logout() {
-    this.authService.signOut().subscribe({
-      next: () => this.router.navigate(['/login']),
-      error: (error: { message: string; }) => {
-        console.error(error);
-        this.snackBar.open(error.message, 'OK', { duration: 5000 });
-      }
-    });
+    this.router.navigate(['/logout']);
   }
 }

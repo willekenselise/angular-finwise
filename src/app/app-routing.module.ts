@@ -6,6 +6,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { ProfileComponent } from './profile/profile.component';
+import { authGuard } from './services/guards/auth.guard';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 const routes: Routes = [
   {
@@ -21,6 +24,18 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [authGuard],
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    // canActivate: [authGuard],
+    // runGuardsAndResolvers: 'always'
+  },
+  {
     path: 'categories',
     component: ListCategoryComponent,
   },
@@ -30,7 +45,7 @@ const routes: Routes = [
   },
   { path: 'edit-category/:id',
    component: EditCategoryComponent
-  },
+  }
 ];
 
 @NgModule({
