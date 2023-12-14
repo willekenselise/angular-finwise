@@ -19,11 +19,13 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HeaderComponent } from './home/header/header.component';
-import { ListCategoryComponent } from './categories/list-category/list-category.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LogoutComponent } from './auth/logout/logout.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
 import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
+import { ListCategoryComponent } from './categories/list-category/list-category.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { AddExpenseComponent } from './expenses/add-expense/add-expense.componen
     EditCategoryComponent,
     ListExpenseComponent,
     AddExpenseComponent,
+    ProfileComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

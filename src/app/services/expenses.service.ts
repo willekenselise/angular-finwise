@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class ExpensesService {
   private expensesCollection: AngularFirestoreCollection<Expense>;
   expenses: Observable<Expense[]>;
-  userId: string | null = null;
+  // userId: string | null = null;
 
   constructor(
     private readonly firestore: AngularFirestore,
-    private fireAuth: AngularFireAuth
+    private authService: AuthService
   ) {
     this.expensesCollection = this.firestore.collection<Expense>('expenses');
     this.expenses = this.expensesCollection.valueChanges({
@@ -32,11 +33,16 @@ export class ExpensesService {
     return this.expenses;
   }
 
+  getExpenseByUserId(userId: string): Observable<Expense[]> {
+    return this.firestore
+      .collection<Expense>('expenses', (ref) =>
+        ref.where('userId', '==', userId)
+      )
+      .valueChanges({ idField: 'uid' });
+  }
+
   addExpense(expense: Expense): Promise<Expense> {
-    this.fireAuth.authState.subscribe((user) => {
-      console.log('user', user);
-      this.userId = user ? user.uid : '';
-    });
+   
     const newExpense: Expense = {
       uid: this.expensesCollection.ref.doc().id,
       createdAt: expense.createdAt,
@@ -47,7 +53,7 @@ export class ExpensesService {
       transactionNature: expense.transactionNature,
       transactionName: expense.transactionName,
       categoryId: expense.categoryId,
-      userId: this.userId!
+      userId: this.authService.currentUser?.uid!,
     };
 
     console.log(newExpense);
