@@ -6,6 +6,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
+import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   { path: 'edit-category/:id',
    component: EditCategoryComponent
   },
+  {
+    path: 'expenses',
+    component: ListExpenseComponent,
+  },
+  {
+    path: 'add-expense',
+    component: AddExpenseComponent,
+  }
 ];
 
 @NgModule({

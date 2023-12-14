@@ -22,6 +22,8 @@ import { HeaderComponent } from './home/header/header.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
+import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
     HeaderComponent,
     ListCategoryComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    ListExpenseComponent,
+    AddExpenseComponent,
   ],
   imports: [
     BrowserModule,

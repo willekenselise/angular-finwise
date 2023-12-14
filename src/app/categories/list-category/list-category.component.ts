@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Category } from '../../models/categories';
+import { Category } from '../../models/category';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class ListCategoryComponent implements OnInit {
   categories: Category[] = [];
 
   ngOnInit(): void {
-    this.categoriesService.getAllExpenses().subscribe((categories) => {
+    this.categoriesService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
     });
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category } from '../models/categories';
+import { Category } from '../models/category';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -21,7 +21,7 @@ export class CategoriesService {
     });
   }
 
-  getAllExpenses(): Observable<Category[]> {
+  getAllCategories(): Observable<Category[]> {
     return this.categories;
   }
 

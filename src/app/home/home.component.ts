@@ -17,4 +17,8 @@ export class HomeComponent {
     this.router.navigate(['/categories']);
   }
 
+  navigateToExpenses(): void {
+    this.router.navigate(['/expenses']);
+  }
+
 }

@@ -1,0 +1,14 @@
+<div>
+  <h2>Expenses List</h2>
+  <button (click)="navigateToAddExpense()">Ajouter une transaction</button>
+
+  <ul>
+    <li *ngFor="let expense of expenses">
+      {{ expense.amount }}
+      {{ expense.transactionNature }}
+      {{ expense.transactionName }}
+      {{ expense.description }}
+      {{ expense.transactionDate }}
+    </li>
+  </ul>
+</div>
