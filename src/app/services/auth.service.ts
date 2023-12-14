@@ -18,7 +18,11 @@ export class AuthService {
 
   authStatusListener() {
     this.auth.authState.subscribe((credential) => {
-      this.authStatusSub.next(credential);
+      if (credential) {
+        this.authStatusSub.next(credential);
+      } else {
+        this.authStatusSub.next(null);
+      }
     });
   }
 
