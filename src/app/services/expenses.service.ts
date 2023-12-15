@@ -14,7 +14,6 @@ import { AuthService } from './auth.service';
 export class ExpensesService {
   private expensesCollection: AngularFirestoreCollection<Expense>;
   expenses: Observable<Expense[]>;
-  // userId: string | null = null;
 
   constructor(
     private readonly firestore: AngularFirestore,
@@ -26,14 +25,11 @@ export class ExpensesService {
     });
   }
 
-   
-
-
   getAllExpenses(): Observable<Expense[]> {
     return this.expenses;
   }
 
-  getExpenseByUserId(userId: string): Observable<Expense[]> {
+  getExpensesByUserId(userId: string): Observable<Expense[]> {
     return this.firestore
       .collection<Expense>('expenses', (ref) =>
         ref.where('userId', '==', userId)
@@ -42,9 +38,10 @@ export class ExpensesService {
   }
 
   addExpense(expense: Expense): Promise<Expense> {
-   
+    const newExpenseId = this.expensesCollection.ref.doc().id;
+
     const newExpense: Expense = {
-      uid: this.expensesCollection.ref.doc().id,
+      uid: newExpenseId,
       createdAt: expense.createdAt,
       updatedAt: expense.updatedAt,
       description: expense.description,
@@ -55,8 +52,9 @@ export class ExpensesService {
       categoryId: expense.categoryId,
       userId: this.authService.currentUser?.uid!,
     };
-
-    console.log(newExpense);
-    return this.expensesCollection.add(newExpense).then(() => newExpense);
+    return this.expensesCollection
+      .doc(newExpenseId)
+      .set(newExpense)
+      .then(() => newExpense);
   }
 }

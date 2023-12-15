@@ -26,17 +26,23 @@ export class CategoriesService {
   }
 
   getCategoryById(categoryId: string): Observable<Category> {
-    return this.catagoriesCollection.doc<Category>(categoryId).valueChanges() as Observable<Category>;
+    return this.catagoriesCollection
+      .doc<Category>(categoryId)
+      .valueChanges() as Observable<Category>;
   }
 
   addCategory(category: Category): Promise<Category> {
+    const newCategoryId = this.catagoriesCollection.ref.doc().id;
     const newCategory: Category = {
-      uid: this.catagoriesCollection.ref.doc().id,
+      uid: newCategoryId,
       name: category.name,
       createdAt: category.createdAt,
       updatedAt: category.updatedAt,
     };
-    return this.catagoriesCollection.add(newCategory).then(() => newCategory);
+    return this.catagoriesCollection
+      .doc(newCategoryId)
+      .set(newCategory)
+      .then(() => newCategory);
   }
 
   deleteCategory(category: Category): Promise<void> {
