@@ -44,7 +44,7 @@ export class AddExpenseComponent implements OnInit{
         createdAt: new Date(),
         updatedAt: new Date(),
         description: this.expenseForm.value.description,
-        amount: this.expenseForm.value.description,
+        amount: this.expenseForm.value.amount,
         transactionDate: this.expenseForm.value.transactionDate,
         transactionNature: this.expenseForm.value.transactionNature as
           | 'crédit'

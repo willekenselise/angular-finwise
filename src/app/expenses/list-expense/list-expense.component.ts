@@ -18,13 +18,21 @@ export class ListExpenseComponent implements OnInit {
     expenses: Expense[] = [];
   
     ngOnInit(): void {
-      this.expensesService.getAllExpenses().subscribe((expenses) => {
+      this.expensesService.getExpensesByUserId().subscribe((expenses) => {
         this.expenses = expenses;
       });
     }
 
     navigateToAddExpense(): void {
       this.router.navigate(['add-expense']);
+    }
+
+    navigateToEditExpense(expense: Expense): void {
+      this.router.navigate(['edit-expense', expense.uid]);
+    }
+
+    deleteExpense(expense: Expense): void {
+      this.expensesService.deleteExpense(expense);
     }
 
 }

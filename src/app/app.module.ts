@@ -26,6 +26,7 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
 import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
 import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
+import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ListCategoryComponent } from './categories/list-category/list-category.
     EditCategoryComponent,
     ListExpenseComponent,
     AddExpenseComponent,
+    EditExpenseComponent,
     ProfileComponent,
     LogoutComponent,
   ],

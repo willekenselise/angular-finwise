@@ -9,6 +9,8 @@
       {{ expense.transactionName }}
       {{ expense.description }}
       {{ expense.transactionDate }}
+      <button (click)="deleteExpense(expense)">Delete</button>
+      <button (click)="navigateToEditExpense(expense)">Edit</button>
     </li>
   </ul>
 </div>

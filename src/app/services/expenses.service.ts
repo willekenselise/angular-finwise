@@ -29,12 +29,18 @@ export class ExpensesService {
     return this.expenses;
   }
 
-  getExpensesByUserId(userId: string): Observable<Expense[]> {
+  getExpensesByUserId(): Observable<Expense[]> {
     return this.firestore
       .collection<Expense>('expenses', (ref) =>
-        ref.where('userId', '==', userId)
+        ref.where('userId', '==', this.authService.currentUser?.uid!)
       )
       .valueChanges({ idField: 'uid' });
+  }
+
+  getExpenseById(expenseId: string): Observable<Expense> {
+    return this.expensesCollection
+      .doc<Expense>(expenseId)
+      .valueChanges() as Observable<Expense>;
   }
 
   addExpense(expense: Expense): Promise<Expense> {
@@ -56,5 +62,13 @@ export class ExpensesService {
       .doc(newExpenseId)
       .set(newExpense)
       .then(() => newExpense);
+  }
+
+  updateExpense(expense: Expense): Promise<void> {
+    return this.expensesCollection.doc(expense.uid).update(expense);
+  }
+
+  deleteExpense(expense: Expense): Promise<void> {
+    return this.expensesCollection.doc(expense.uid).delete();
   }
 }

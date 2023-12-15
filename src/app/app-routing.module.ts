@@ -11,6 +11,7 @@ import { AddExpenseComponent } from './expenses/add-expense/add-expense.componen
 import { ProfileComponent } from './profile/profile.component';
 import { authGuard } from './services/guards/auth.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,11 @@ const routes: Routes = [
     path: 'add-expense',
     component: AddExpenseComponent,
     canActivate: [authGuard]
-
+  },
+  {
+    path: 'edit-expense/:id',
+    component: EditExpenseComponent,
+    canActivate: [authGuard]
   }
 ];
 

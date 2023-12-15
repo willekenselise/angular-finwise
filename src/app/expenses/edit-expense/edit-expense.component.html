@@ -1,0 +1,40 @@
+<div>
+	<h2>Edit Expense</h2>
+	<form [formGroup]="expenseForm" (ngSubmit)="updateExpense()">
+		<div>
+			<label for="description">Description:</label>
+			<input type="text" id="description" formControlName="description">
+		</div>
+
+		<div>
+			<label for="amount">Amount:</label>
+			<input type="number" id="amount" formControlName="amount">
+		</div>
+
+		<div>
+			<label for="transactionDate">Transaction Date:</label>
+			<input type="date" id="transactionDate" formControlName="transactionDate">
+		</div>
+
+		<div>
+			<label for="transactionNature">Transaction Nature:</label>
+			<select id="transactionNature" formControlName="transactionNature">
+				<option value="crédit">Crédit</option>
+				<option value="débit">Débit</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="transactionName">Transaction Name:</label>
+			<input type="text" id="transactionName" formControlName="transactionName">
+			<div>
+				<label for="categoryId">Catégorie:</label>
+				<select id="categoryId" formControlName="categoryId" required>
+					<option *ngFor="let category of categories" [value]="category.uid">{{ category.name }}</option>
+				</select>
+			</div>
+		</div>
+
+		<button type="submit" [disabled]="!expenseForm.valid">Update Expense</button>
+	</form>
+</div>
