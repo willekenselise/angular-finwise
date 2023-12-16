@@ -53,13 +53,13 @@ export class UsersService {
     });
   }
 
-  updateUserPhoto(user: any) {
+  updateUserPhoto(user: any, photoURL: string) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${user.uid}`
     );
 
     const userData = {
-      photoURL: user.photoURL,
+      photoURL: photoURL,
     };
 
     return userRef.set(userData, {

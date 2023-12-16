@@ -6,8 +6,9 @@
               <img src="{{(user.photoURL) ? user.photoURL : '../../../../assets/dummy-user.jpg'}}" alt="{{user.displayName}}">
               <!-- Edit Picture Icon -->
               <div class="edit-icon">
-                <mat-icon >camera</mat-icon>
+                <mat-icon (click)="inputField.click()">camera</mat-icon>
               </div>
+              <input #inputField hidden type="file" (change)="onFileSelected($event)"/>
             </div>
             <div class="user-info">
               <!-- User's Name -->
