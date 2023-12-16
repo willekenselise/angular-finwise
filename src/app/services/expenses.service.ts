@@ -30,11 +30,11 @@ export class ExpensesService {
   // }
 
   getExpensesByUserId(): Observable<Expense[]> {
-    return this.expenses = this.firestore
+    return (this.expenses = this.firestore
       .collection<Expense>('expenses', (ref) =>
         ref.where('userId', '==', this.authService.currentUser?.uid!)
       )
-      .valueChanges({ idField: 'uid' });
+      .valueChanges({ idField: 'uid' }));
   }
 
   getExpenseById(expenseId: string): Observable<Expense> {
@@ -72,29 +72,45 @@ export class ExpensesService {
     return this.expensesCollection.doc(expense.uid).delete();
   }
 
+  getExpensesByCategory(categoryId: string): Observable<Expense[]> {
+    return this.expenses.pipe(
+      map((expenses: Expense[]) =>
+        expenses.filter(
+          (expense) =>
+            expense.userId === this.authService.currentUser?.uid! &&
+            expense.categoryId === categoryId
+        )
+      )
+    );
+  }
+
   getExpensesByCategoryAndUser(categoryId: string): Observable<string> {
     return this.expenses.pipe(
       map((expenses: Expense[]) => {
-        const filteredExpenses = expenses.filter((expense) =>
-          expense.userId === this.authService.currentUser?.uid! &&
-          expense.categoryId === categoryId
+        const filteredExpenses = expenses.filter(
+          (expense) =>
+            expense.userId === this.authService.currentUser?.uid! &&
+            expense.categoryId === categoryId
         );
-  
-        const totalAmount = filteredExpenses.reduce((total, expense) => {
-          if (expense.transactionNature === 'débit') {
-            return total - expense.amount;
 
-          } else if (expense.transactionNature === 'crédit') {
-            return total + expense.amount;
-          } else {
-            return total;
-          }
-        }, 0);
-  
-        return  totalAmount >= 0 ? `+ ${totalAmount}` : `- ${Math.abs(totalAmount)}`;
+        const totalAmount = this.calculateTotalAmount(filteredExpenses);
+
+        return totalAmount >= 0
+          ? `+ ${totalAmount}`
+          : `- ${Math.abs(totalAmount)}`;
       })
     );
   }
-  
 
+  private calculateTotalAmount(expenses: Expense[]): number {
+    return expenses.reduce((total, expense) => {
+      if (expense.transactionNature === 'débit') {
+        return total - expense.amount;
+      } else if (expense.transactionNature === 'crédit') {
+        return total + expense.amount;
+      } else {
+        return total;
+      }
+    }, 0);
+  }
 }

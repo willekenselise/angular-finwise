@@ -1,0 +1,44 @@
+<div *ngIf="category">
+  <h2>{{ category.name }}</h2>
+
+  <table class="expense-table">
+    <thead>
+      <tr>
+        <th>Transaction</th>
+        <th>Montant</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngIf="expenses.length === 0" colspan="5">
+          Aucune dépense pour cette catégorie.
+        </td>
+      </tr>
+      <tr *ngFor="let expense of expenses">
+        <td>{{ expense.transactionName }}</td>
+        <td>{{ expense.amount }} €</td>
+        <td>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</td>
+        <td>{{ expense.description }}</td>
+        <td
+          [class.depense]="expense.transactionNature === 'débit'"
+          [class.credit]="expense.transactionNature === 'crédit'"
+        >
+          {{ expense.transactionNature }}
+        </td>
+        <td>
+            <mat-icon
+            class="icon-action"
+            (click)="navigateToExpense(expense)"
+            aria-hidden="false"
+            aria-label="visibility icon"
+            fontIcon="visibility"
+          ></mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

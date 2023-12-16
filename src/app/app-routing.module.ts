@@ -12,6 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
+import { SingleCategoryComponent } from './categories/single-category/single-category.component';
+import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,18 @@ const routes: Routes = [
   {
     path: 'categories',
     component: ListCategoryComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'categories/:id',
+    component: SingleCategoryComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'expenses/:id',
+    component: SingleExpenseComponent,
     canActivate: [AuthGuard]
 
   },

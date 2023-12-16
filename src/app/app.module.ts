@@ -29,6 +29,8 @@ import { ListCategoryComponent } from './categories/list-category/list-category.
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 import { HomeComponent } from './home/home.component';
 import { MatCardModule } from '@angular/material/card';
+import { SingleCategoryComponent } from './categories/single-category/single-category.component';
+import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { MatCardModule } from '@angular/material/card';
     EditExpenseComponent,
     ProfileComponent,
     LogoutComponent,
+    SingleCategoryComponent,
+    SingleExpenseComponent
   ],
   imports: [
     MatCardModule,

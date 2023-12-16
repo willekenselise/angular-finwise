@@ -1,7 +1,9 @@
 <section>
   <div class="list-section-header">
     <h2>Liste des catégories</h2>
-    <button class="button-add-datas" (click)="toggleAddCategoryVisibility()"> + ajouter</button>
+    <button class="button-add-datas" (click)="toggleAddCategoryVisibility()">
+      + ajouter
+    </button>
   </div>
 
   <app-add-category *ngIf="isAddCategoryVisible"></app-add-category>
@@ -9,23 +11,45 @@
   <p>Liste de catégories avec les montants des dépenses effectuées</p>
 
   <div class="card-container">
-    <mat-card *ngFor="let category of categories; let i = index" class="category-card"
-      [style.border]="getRandomColor()">
+    <mat-card
+      *ngFor="let category of categories; let i = index"
+      class="category-card"
+      [style.border]="getRandomColor()"
+    >
       <mat-card-content class="card-amount">
-					{{ category.totalAmount }} €
-				</mat-card-content>
+        {{ category.totalAmount }} €
+      </mat-card-content>
       <mat-card-header class="category-card-header">
-        <mat-card-title class="card-title">{{ category.cat.name }}</mat-card-title>
+        <mat-card-title class="card-title">{{
+          category.cat.name
+        }}</mat-card-title>
         <div class="card-action">
-          <mat-icon class="icon-action" (click)="deleteCategory(category.cat)" aria-hidden="false" aria-label="delete icon"
-            fontIcon="delete_outline"></mat-icon>
-          <mat-icon class="icon-action" (click)="navigateToEditCategory(category.cat)" aria-hidden="false"
-            aria-label="edit icon" fontIcon="edit"></mat-icon>
+
+          <mat-icon
+            class="icon-action"
+            (click)="navigateToCategorySingle(category.cat.uid)"
+            aria-hidden="false"
+            aria-label="visibility icon"
+            fontIcon="visibility"
+          ></mat-icon>
+
+          <mat-icon
+            class="icon-action"
+            (click)="deleteCategory(category.cat)"
+            aria-hidden="false"
+            aria-label="delete icon"
+            fontIcon="delete_outline"
+          ></mat-icon>
+
+          <mat-icon
+            class="icon-action"
+            (click)="navigateToEditCategory(category.cat)"
+            aria-hidden="false"
+            aria-label="edit icon"
+            fontIcon="edit"
+          ></mat-icon>
         </div>
       </mat-card-header>
     </mat-card>
   </div>
-
-
-
 </section>
