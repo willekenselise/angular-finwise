@@ -1,12 +1,9 @@
-<div class="row">
-    <div class="col-md-3">
-      <div class="menu">
-        <ul>
-          <li><a routerLink="/profile">Profil</a></li>
-          <li><a routerLink="">Yearly View</a></li>
-        </ul>
-        <button *ngIf="!isAuthenticated" (click)="login()">Log In</button>
-        <button *ngIf="!isAuthenticated" (click)="register()">Register</button>
-        <button *ngIf="isAuthenticated" (click)="logout()">Log Out</button>
-    </div>
-</div>
+<header class="header">
+  <ul *ngIf="isAuthenticated">
+    <li><a routerLink="/profile">Profil</a></li>
+    <li><a routerLink="">Home</a></li>
+  </ul>
+  <!-- <button *ngIf="!isAuthenticated" (click)="login()">Log In</button>
+  <button *ngIf="!isAuthenticated" (click)="register()">Register</button> -->
+  <button *ngIf="isAuthenticated" (click)="logout()">Log Out</button>
+</header>

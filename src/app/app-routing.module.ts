@@ -6,14 +6,19 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
+import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 import { ProfileComponent } from './profile/profile.component';
-import { authGuard } from './services/guards/auth.guard';
+import { AuthGuard } from './services/guards/auth.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'login',
@@ -26,7 +31,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [authGuard],
+    canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always'
   },
   {
@@ -38,13 +43,35 @@ const routes: Routes = [
   {
     path: 'categories',
     component: ListCategoryComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'add-category',
     component: AddCategoryComponent,
+    canActivate: [AuthGuard]
+
   },
   { path: 'edit-category/:id',
-   component: EditCategoryComponent
+   component: EditCategoryComponent,
+   canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'expenses',
+    component: ListExpenseComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'add-expense',
+    component: AddExpenseComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-expense/:id',
+    component: EditExpenseComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

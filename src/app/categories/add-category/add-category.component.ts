@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../../models/categories';
+import { Category } from '../../models/category';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from '../../services/categories.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +13,6 @@ export class AddCategoryComponent {
   categoryForm: FormGroup;
 
   constructor(
-    private router : Router,
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder
   ) {
@@ -33,8 +31,8 @@ export class AddCategoryComponent {
       }
       try {
         await this.categoriesService.addCategory(newCategory);
-        console.log('Expense added !');
-        this.router.navigate(['categories']);
+        console.log('Category added !');
+        this.categoryForm.reset();
       } catch (error) {
         this.categoryForm.reset();
         console.error('Error adding category:', error);

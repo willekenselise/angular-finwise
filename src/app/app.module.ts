@@ -23,21 +23,31 @@ import { ProfileComponent } from './profile/profile.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
+import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
+import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
+import { HomeComponent } from './home/home.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    HomeComponent,
     HeaderComponent,
     ListCategoryComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    ListExpenseComponent,
+    AddExpenseComponent,
+    EditExpenseComponent,
     ProfileComponent,
     LogoutComponent,
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -1,0 +1,39 @@
+<section>
+  <div class="list-section-header">
+    <h2>Liste des transactions</h2>
+    <button class="button-add-datas" (click)="toggleAddExpenseVisibility()"> + ajouter</button>
+  </div>
+
+  <app-add-expense *ngIf="isAddExpenseVisible"></app-add-expense>
+
+  <table class="expense-table">
+    <thead>
+      <tr>
+        <th>Transaction</th>
+        <th>Montant</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Action</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let expense of expenses">
+        <td>{{ expense.transactionName }}</td>
+        <td>{{ expense.amount }} €</td>
+        <td>{{ expense.transactionDate | date:'dd MMMM yyyy'}}</td>
+        <td>{{ expense.description }}</td>
+        <td [class.depense]="expense.transactionNature === 'débit'" [class.credit]="expense.transactionNature === 'crédit'">
+          {{ expense.transactionNature }}
+        </td>
+        <td class="card-action">
+          <mat-icon class="icon-action" (click)="deleteExpense(expense)" aria-hidden="false" aria-label="delete icon"
+          fontIcon="delete_outline"></mat-icon>
+          <mat-icon class="icon-action" (click)="navigateToEditExpense(expense)" aria-hidden="false"
+          aria-label="edit icon" fontIcon="edit"></mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</section>

@@ -1,0 +1,29 @@
+:host {
+    flex-grow: 1;
+    padding: 15px;
+}
+form{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.rounded-input {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  .styled-button {
+    background-color: #2d2d2d;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .styled-button:hover {
+    background-color: #1e1e1e;
+  }
+  

@@ -1,0 +1,55 @@
+:host {
+    flex-grow: 1;
+    padding: 15px;
+}
+
+.list-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .button-add-datas {
+        font-weight: 900;
+        font-size: 15px;
+        background-color: transparent;
+        color: #2d2d2d;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .category-card {
+    background-color: #fff;
+    color: #2d2d2d;
+    .category-card-header{
+        display: flex;
+        justify-content: space-between;
+        .card-title {
+            font-size: 18px;
+            text-transform: capitalize;
+            padding: 0 0px 16px;
+            font-weight: 700;
+        }
+        .card-action{
+            display: flex;
+            gap: 20px;
+            .icon-action:hover{
+                cursor: pointer;
+            }
+        }
+    }
+  }
+  
+
+  
+  .card-amount {
+    font-size: 30px;
+    font-weight: 900;
+  }
+  

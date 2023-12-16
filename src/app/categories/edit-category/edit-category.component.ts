@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from '../../services/categories.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Category } from '../../models/categories';
+import { Category } from '../../models/category';
 
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.scss']
+  styleUrls: ['../add-category/add-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
 
