@@ -6,18 +6,20 @@
 
   <app-add-category *ngIf="isAddCategoryVisible"></app-add-category>
 
+  <p>Liste de catégories avec les montants des dépenses effectuées</p>
+
   <div class="card-container">
     <mat-card *ngFor="let category of categories; let i = index" class="category-card"
       [style.border]="getRandomColor()">
-      <!-- <mat-card-content class="card-amount">
-					{{ expense.totalAmount }} €
-				</mat-card-content> -->
+      <mat-card-content class="card-amount">
+					{{ category.totalAmount }} €
+				</mat-card-content>
       <mat-card-header class="category-card-header">
-        <mat-card-title class="card-title">{{ category.name }}</mat-card-title>
+        <mat-card-title class="card-title">{{ category.cat.name }}</mat-card-title>
         <div class="card-action">
-          <mat-icon class="icon-action" (click)="deleteCategory(category)" aria-hidden="false" aria-label="delete icon"
+          <mat-icon class="icon-action" (click)="deleteCategory(category.cat)" aria-hidden="false" aria-label="delete icon"
             fontIcon="delete_outline"></mat-icon>
-          <mat-icon class="icon-action" (click)="navigateToEditCategory(category)" aria-hidden="false"
+          <mat-icon class="icon-action" (click)="navigateToEditCategory(category.cat)" aria-hidden="false"
             aria-label="edit icon" fontIcon="edit"></mat-icon>
         </div>
       </mat-card-header>

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   latestFiveExpenses: Expense[] = [];
-  firstThreeCategories: { name: string; totalAmount: number }[] = [];
+  firstThreeCategories: { cat: Category; totalAmount: string }[] = [];
   totalAmount = 0;
 
   ngOnInit(): void {
@@ -34,31 +34,19 @@ export class HomeComponent implements OnInit {
         )
         .slice(0, 5);
     });
-    this.getTotalAmountByCategory();
+    this.getTotalAmountByCategory()
   }
 
-  getTotalAmountByCategory(): void {
-    const MAX_CATEGORIES = 3;
-    this.categoriesService.getAllCategories().subscribe((categories: Category[]) => {
-      let count = 0;
-      categories.forEach((category) => {
-        this.expensesService
-          .getExpensesByCategoryAndUser(category.uid)
-          .subscribe((totalAmount: number) => {
-            if (totalAmount > 0) {
-              this.firstThreeCategories.push({
-                name: category.name,
-                totalAmount,
-              });
-              count++;
-              if (count >= MAX_CATEGORIES) {
-                return;
-              }
-            }
-          });
-      });
-    });
+
+  async getTotalAmountByCategory(): Promise<void> {
+    try {
+      this.firstThreeCategories = await this.categoriesService.getTotalAmountByCategory(3);
+      console.log(this.firstThreeCategories);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
   }
+  
   
 
   navigateToCategories(): void {

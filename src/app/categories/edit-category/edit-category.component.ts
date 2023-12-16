@@ -7,7 +7,7 @@ import { Category } from '../../models/category';
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.scss']
+  styleUrls: ['../add-category/add-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
 

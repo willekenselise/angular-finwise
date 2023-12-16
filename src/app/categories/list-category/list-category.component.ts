@@ -17,14 +17,16 @@ export class ListCategoryComponent implements OnInit {
 
   @Input() categoriesDisplay: Category[] = [];
 
-  categories: Category[] = [];
+  categories: { cat: Category; totalAmount: string }[] = [];
   tabColor = ['#b871ffb1', '#ee7fab9c', "#edb949c9"]
   isAddCategoryVisible = false
 
 
   ngOnInit(): void {
-    this.categoriesService.getAllCategories().subscribe((categories) => {
-      this.categories = categories;
+    this.categoriesService.getAllCategories().subscribe((categories: Category[]) => {
+      this.categoriesService.getTotalAmountByCategory(categories.length).then((obj) => {
+        this.categories = obj;
+      });
     });
   }
 

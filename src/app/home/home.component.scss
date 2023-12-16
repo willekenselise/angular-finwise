@@ -83,7 +83,7 @@
 
 @media screen and (max-width: 768px) {
   .expense-card {
-    width: 100%;
+    width: 100% !important;
   }
 
   .expense-table th,

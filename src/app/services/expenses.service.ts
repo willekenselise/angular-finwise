@@ -72,7 +72,7 @@ export class ExpensesService {
     return this.expensesCollection.doc(expense.uid).delete();
   }
 
-  getExpensesByCategoryAndUser(categoryId: string): Observable<number> {
+  getExpensesByCategoryAndUser(categoryId: string): Observable<string> {
     return this.expenses.pipe(
       map((expenses: Expense[]) => {
         const filteredExpenses = expenses.filter((expense) =>
@@ -80,15 +80,18 @@ export class ExpensesService {
           expense.categoryId === categoryId
         );
   
-        return filteredExpenses.reduce((total, expense) => {
+        const totalAmount = filteredExpenses.reduce((total, expense) => {
           if (expense.transactionNature === 'débit') {
-            return total + expense.amount;
-          } else if (expense.transactionNature === 'crédit') {
             return total - expense.amount;
+
+          } else if (expense.transactionNature === 'crédit') {
+            return total + expense.amount;
           } else {
             return total;
           }
         }, 0);
+  
+        return  totalAmount >= 0 ? `+ ${totalAmount}` : `- ${Math.abs(totalAmount)}`;
       })
     );
   }

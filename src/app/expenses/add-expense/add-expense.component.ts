@@ -56,6 +56,7 @@ export class AddExpenseComponent implements OnInit{
       try {
         await this.expenesesService.addExpense(newExpense);
         console.log('Expense added !');
+        this.expenseForm.reset();
         this.router.navigate(['expenses']);
       } catch (error) {
         this.expenseForm.reset();
