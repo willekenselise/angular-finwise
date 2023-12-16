@@ -1,0 +1,118 @@
+:host {
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.expense-table {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.credit,
+.depense {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 5px;
+}
+
+.credit {
+  background-color: rgba(0, 128, 0, 0.3);
+  color: green;
+}
+
+.depense {
+  background-color: rgba(255, 0, 0, 0.3);
+  color: red;
+}
+
+.mat-mdc-card-header {
+  padding: 0px 16px;
+}
+
+
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  .expense-card {
+    width: 33%;
+    color: #fff;
+  
+    .card-title {
+      font-size: 18px;
+      text-transform: capitalize;
+      padding: 0 0px 16px;
+      font-weight: 700;
+    }
+  
+    .card-amount {
+      font-size: 30px;
+      font-weight: 900;
+    }
+  }
+}
+
+.home-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .button-all-datas {
+    font-weight: 900;
+    font-size: 15px;
+    background-color: transparent;
+    color: #2d2d2d;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .expense-card {
+    width: 100%;
+  }
+
+  .expense-table th,
+  .expense-table td {
+    display: block;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .expense-table tbody tr {
+    margin-bottom: 15px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .expense-table tbody tr td {
+    border-bottom: none;
+  }
+
+  .expense-table thead,
+  .expense-table tbody td:nth-child(4) {
+    display: none;
+  }
+
+  .card-container {
+    flex-direction: column;
+  }
+}

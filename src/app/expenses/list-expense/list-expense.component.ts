@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Expense } from '../../models/expense';
 import { ExpensesService } from '../../services/expenses.service';
 import { Router } from '@angular/router';
@@ -6,33 +6,34 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-expense',
   templateUrl: './list-expense.component.html',
-  styleUrl: './list-expense.component.scss'
+  styleUrl: './list-expense.component.scss',
 })
 export class ListExpenseComponent implements OnInit {
-  
-    constructor(
-      private router: Router,
-      private expensesService: ExpensesService,
-    ) {}
+  constructor(
+    private router: Router,
+    private expensesService: ExpensesService
+  ) {}
 
-    expenses: Expense[] = [];
-  
-    ngOnInit(): void {
-      this.expensesService.getExpensesByUserId().subscribe((expenses) => {
-        this.expenses = expenses;
-      });
-    }
+  @Input() expensesDisplay: Expense[] = [];
 
-    navigateToAddExpense(): void {
-      this.router.navigate(['add-expense']);
-    }
+  expenses: Expense[] = [];
+  isAddExpenseVisible = false;
 
-    navigateToEditExpense(expense: Expense): void {
-      this.router.navigate(['edit-expense', expense.uid]);
-    }
+  ngOnInit(): void {
+    this.expensesService.getExpensesByUserId().subscribe((expenses) => {
+      this.expenses = expenses;
+    });
+  }
 
-    deleteExpense(expense: Expense): void {
-      this.expensesService.deleteExpense(expense);
-    }
+  toggleAddExpenseVisibility(): void {
+    this.isAddExpenseVisible = !this.isAddExpenseVisible;
+  }
 
+  navigateToEditExpense(expense: Expense): void {
+    this.router.navigate(['edit-expense', expense.uid]);
+  }
+
+  deleteExpense(expense: Expense): void {
+    this.expensesService.deleteExpense(expense);
+  }
 }

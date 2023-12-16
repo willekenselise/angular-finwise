@@ -4,7 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from './auth.service';
 
@@ -25,12 +25,12 @@ export class ExpensesService {
     });
   }
 
-  getAllExpenses(): Observable<Expense[]> {
-    return this.expenses;
-  }
+  // getAllExpenses(): Observable<Expense[]> {
+  //   return this.expenses;
+  // }
 
   getExpensesByUserId(): Observable<Expense[]> {
-    return this.firestore
+    return this.expenses = this.firestore
       .collection<Expense>('expenses', (ref) =>
         ref.where('userId', '==', this.authService.currentUser?.uid!)
       )
@@ -71,4 +71,27 @@ export class ExpensesService {
   deleteExpense(expense: Expense): Promise<void> {
     return this.expensesCollection.doc(expense.uid).delete();
   }
+
+  getExpensesByCategoryAndUser(categoryId: string): Observable<number> {
+    return this.expenses.pipe(
+      map((expenses: Expense[]) => {
+        const filteredExpenses = expenses.filter((expense) =>
+          expense.userId === this.authService.currentUser?.uid! &&
+          expense.categoryId === categoryId
+        );
+  
+        return filteredExpenses.reduce((total, expense) => {
+          if (expense.transactionNature === 'débit') {
+            return total + expense.amount;
+          } else if (expense.transactionNature === 'crédit') {
+            return total - expense.amount;
+          } else {
+            return total;
+          }
+        }, 0);
+      })
+    );
+  }
+  
+
 }

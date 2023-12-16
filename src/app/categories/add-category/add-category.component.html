@@ -1,8 +1,9 @@
 <div>
-    <h2>Add Category</h2>
-    <form [formGroup]="categoryForm" (submit)="addCategory()">
-      <label for="categoryName">Nom de la catégorie:</label>
-      <input type="text" id="categoryName" formControlName="name" required>
-      <button type="submit">Ajouté</button>
-    </form>
-  </div>
+  <span>
+    Nouvelle catégory:
+  </span>
+  <form [formGroup]="categoryForm" (submit)="addCategory()">
+    <input type="text" id="categoryName" formControlName="name" required class="rounded-input">
+    <button type="submit" class="styled-button">Ajouté</button>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 <form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
     <div>
         <label for="amount">Montant:</label>
-        <input type="number" id="amount" formControlName="amount" required>
+        <input class="rounded-input" type="number" id="amount" formControlName="amount" required>
     </div>
 
     <div>
@@ -16,25 +16,25 @@
 
     <div>
         <label for="transactionName">Nom de la transaction:</label>
-        <input type="text" id="transactionName" formControlName="transactionName" required>
+        <input class="rounded-input" type="text" id="transactionName" formControlName="transactionName" required>
     </div>
 
     <div>
         <label for="description">Description:</label>
-        <input type="text" id="description" formControlName="description" required>
+        <input class="rounded-input" type="text" id="description" formControlName="description" required>
     </div>
 
     <div>
         <label for="transactionDate">Date de la transaction:</label>
-        <input type="date" id="transactionDate" formControlName="transactionDate" required>
+        <input class="rounded-input" type="date" id="transactionDate" formControlName="transactionDate" required>
     </div>
 
     <div>
         <label for="categoryId">Catégorie:</label>
-        <select id="categoryId" formControlName="categoryId" required>
+        <select class="rounded-input" id="categoryId" formControlName="categoryId" required>
             <option *ngFor="let category of categories" [value]="category.uid">{{ category.name }}</option>
         </select>
     </div>
 
-    <button type="submit">Ajouter</button>
+    <button type="submit" class="styled-button">Ajouter</button>
 </form>

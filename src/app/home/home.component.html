@@ -1,5 +1,54 @@
 <div class="col-md-9">
-    <h2>Bienvenue sur la page d'accueil</h2>
-    <button (click)="navigateToCategories()">See all categories</button>
-    <button (click)="navigateToExpenses()">See all expenses</button>
+	<section>
+		<div class="home-section-header">
+			<h2>Catégories</h2>
+			<button class="button-all-datas" (click)="navigateToCategories()">voir tout</button>
+		</div>
+		<div class="card-container">
+			<mat-card *ngFor="let expense of firstThreeCategories; let i = index"
+				class="expense-card"
+				[style.background-color]="tabColor[i]"
+				>
+				<mat-card-content class="card-amount">
+					{{ expense.totalAmount }} €
+				</mat-card-content>
+				<mat-card-header>
+					<mat-card-title class="card-title">{{ expense.name }}</mat-card-title>
+				</mat-card-header>
+			</mat-card>
+		</div>
+	</section>
+	
+
+	<section>
+		<div class="home-section-header">
+			<h2>Dépenses récentes</h2>
+			<button  class="button-all-datas" (click)="navigateToExpenses()">voir tout</button>
+		</div>
+		<table class="expense-table">
+			<thead>
+				<tr>
+					<th>Transaction </th>
+					<th>Montant</th>
+					<th>Date</th>
+					<th>Description</th>
+					<th>Type</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let expense of latestFiveExpenses">
+					<td>{{ expense.transactionName }}</td>
+					<td>{{ expense.amount }} €</td>
+					<td>{{ expense.transactionDate | date:'dd MMMM yyyy'}}</td>
+					<td>{{ expense.description }}</td>
+					<td>
+						<div>
+							<td [class.depense]="expense.transactionNature === 'débit'"
+								[class.credit]="expense.transactionNature === 'crédit'">{{ expense.transactionNature }}</td>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
 </div>

@@ -27,12 +27,15 @@ import { ListExpenseComponent } from './expenses/list-expense/list-expense.compo
 import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 import { ListCategoryComponent } from './categories/list-category/list-category.component';
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
+import { HomeComponent } from './home/home.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    HomeComponent,
     HeaderComponent,
     ListCategoryComponent,
     AddCategoryComponent,
@@ -44,6 +47,7 @@ import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.compo
     LogoutComponent,
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

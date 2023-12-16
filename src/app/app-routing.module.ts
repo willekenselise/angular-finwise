@@ -9,7 +9,7 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
 import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
 import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
 import { ProfileComponent } from './profile/profile.component';
-import { authGuard } from './services/guards/auth.guard';
+import { AuthGuard } from './services/guards/auth.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 
@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
 
   },
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [authGuard],
+    canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always'
   },
   {
@@ -43,35 +43,35 @@ const routes: Routes = [
   {
     path: 'categories',
     component: ListCategoryComponent,
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
 
   },
   {
     path: 'add-category',
     component: AddCategoryComponent,
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
 
   },
   { path: 'edit-category/:id',
    component: EditCategoryComponent,
-   canActivate: [authGuard]
+   canActivate: [AuthGuard]
 
   },
   {
     path: 'expenses',
     component: ListExpenseComponent,
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
 
   },
   {
     path: 'add-expense',
     component: AddExpenseComponent,
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-expense/:id',
     component: EditExpenseComponent,
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
   }
 ];
 

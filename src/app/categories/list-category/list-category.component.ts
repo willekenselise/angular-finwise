@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Category } from '../../models/category';
@@ -7,16 +7,20 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-category',
   templateUrl: './list-category.component.html',
-  styleUrl: './list-category.component.scss'
+  styleUrl: './list-category.component.scss',
 })
 export class ListCategoryComponent implements OnInit {
-
   constructor(
     private router: Router,
-    private categoriesService: CategoriesService,
+    private categoriesService: CategoriesService
   ) {}
 
+  @Input() categoriesDisplay: Category[] = [];
+
   categories: Category[] = [];
+  tabColor = ['#b871ffb1', '#ee7fab9c', "#edb949c9"]
+  isAddCategoryVisible = false
+
 
   ngOnInit(): void {
     this.categoriesService.getAllCategories().subscribe((categories) => {
@@ -24,8 +28,8 @@ export class ListCategoryComponent implements OnInit {
     });
   }
 
-  navigateToAddCategory(): void {
-    this.router.navigate(['add-category']);
+  toggleAddCategoryVisibility(): void {
+    this.isAddCategoryVisible = !this.isAddCategoryVisible;
   }
 
   deleteCategory(category: Category): void {
@@ -34,5 +38,10 @@ export class ListCategoryComponent implements OnInit {
 
   navigateToEditCategory(category: Category): void {
     this.router.navigate(['edit-category', category.uid]);
+  }
+
+  getRandomColor(): string {
+    const randomIndex = Math.floor(Math.random() * this.tabColor.length);
+    return `0.5px solid ${this.tabColor[randomIndex]}`;
   }
 }

@@ -23,7 +23,7 @@ export class AddExpenseComponent implements OnInit{
   ) {
     this.expenseForm = this.formBuilder.group({
       amount: ['', Validators.required],
-      transactionNature: ['dépense', Validators.required],
+      transactionNature: ['débit', Validators.required],
       transactionName: ['', Validators.required],
       description: ['', Validators.required],
       transactionDate: ['', Validators.required],
