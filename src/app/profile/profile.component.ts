@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { User } from '../models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UploadImageService } from '../services/upload-image.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,11 @@ export class ProfileComponent implements OnInit{
     pseudo: new FormControl('', Validators.required),
   });
 
-  constructor(private authService: AuthService ,private userService: UsersService) { }
+  constructor(
+    private authService: AuthService ,
+    private userService: UsersService,
+    private imageUploadService: UploadImageService
+  ) { }
 
   ngOnInit(): void {
     this.userService.getUser().subscribe((user) => {
@@ -36,4 +41,11 @@ export class ProfileComponent implements OnInit{
     this.userService.updadteUserDisplayName(userData);
   }
 
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    this.imageUploadService.uploadImage(file).then((downloadURL) => {
+      console.log('Image uploaded successfully. URL:', downloadURL);
+      this.userService.updateUserPhoto(this.userInformation, downloadURL)
+    });
+  }
 }
