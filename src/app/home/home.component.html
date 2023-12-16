@@ -38,7 +38,7 @@
 			<tbody>
 				<tr *ngFor="let expense of latestFiveExpenses">
 					<td>{{ expense.transactionName }}</td>
-					<td>{{ expense.amount }} €</td>
+					<td>{{ expense.transactionNature === 'débit' ? '-' : '+' }} {{ expense.amount }} €</td>
 					<td>{{ expense.transactionDate | date:'dd MMMM yyyy'}}</td>
 					<td>{{ expense.description }}</td>
 					<td>

@@ -34,6 +34,27 @@
         <select class="rounded-input" id="categoryId" formControlName="categoryId" required>
             <option *ngFor="let category of categories" [value]="category.uid">{{ category.name }}</option>
         </select>
+        <details>
+            <summary>
+                <div class="button">
+                    <mat-icon class="add-category-icon" >add_circle</mat-icon>
+                </div>
+                <div class="details-modal-overlay"></div>
+            </summary>
+            <div class="details-modal">
+                <div class="details-modal-close">
+                    <mat-icon class="close-icon">close</mat-icon>
+                </div>
+                <div class="details-modal-title">
+                    <h1>Add a new category</h1>
+                </div>
+                <div class="details-modal-content">
+                    <p>
+                    <app-add-category></app-add-category>
+                    </p>
+                </div>
+            </div>
+        </details>
     </div>
 
     <button type="submit" class="styled-button">Ajouter</button>
