@@ -46,4 +46,8 @@ export class ListCategoryComponent implements OnInit {
     const randomIndex = Math.floor(Math.random() * this.tabColor.length);
     return `0.5px solid ${this.tabColor[randomIndex]}`;
   }
+
+  navigateToCategorySingle(categoryId: string): void {
+    this.router.navigate(['/categories', categoryId]);
+  }
 }

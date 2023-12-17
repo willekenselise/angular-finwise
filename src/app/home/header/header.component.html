@@ -1,9 +1,23 @@
-<header class="header">
-  <ul *ngIf="isAuthenticated">
-    <li><a routerLink="/profile">Profil</a></li>
-    <li><a routerLink="">Home</a></li>
+<header class="header" *ngIf="isAuthenticated">
+  <ul>
+    <button mat-button routerLink="/home">Home</button>
   </ul>
-  <!-- <button *ngIf="!isAuthenticated" (click)="login()">Log In</button>
-  <button *ngIf="!isAuthenticated" (click)="register()">Register</button> -->
-  <button *ngIf="isAuthenticated" (click)="logout()">Log Out</button>
+
+  <button mat-button [matMenuTriggerFor]="profileMenu">
+    {{ fullName }}
+    <mat-icon
+      class="icon-action"
+      aria-hidden="false"
+      aria-label="person icon"
+      fontIcon="person"
+    ></mat-icon>
+  </button>
+
+  <mat-menu #profileMenu="matMenu" yPosition="below">
+    <button mat-menu-item routerLink="/profile">Profile</button>
+    <button mat-menu-item (click)="logout()">Log Out</button>
+  </mat-menu>
 </header>
+
+<!-- <button *ngIf="!isAuthenticated" (click)="login()">Log In</button>
+  <button *ngIf="!isAuthenticated" (click)="register()">Register</button> -->
