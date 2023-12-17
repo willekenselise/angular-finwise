@@ -32,6 +32,7 @@ import { HomeComponent } from './home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { SingleCategoryComponent } from './categories/single-category/single-category.component';
 import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
+import { TotalComponent } from './expenses/total/total.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SingleExpenseComponent } from './expenses/single-expense/single-expense
     ProfileComponent,
     LogoutComponent,
     SingleCategoryComponent,
-    SingleExpenseComponent
+    SingleExpenseComponent,
+    TotalComponent
   ],
   imports: [
     MatCardModule,
