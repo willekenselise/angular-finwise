@@ -11,9 +11,8 @@ export class AppComponent {
   title = 'angular-finwise';
 
   isDarkMode$: Observable<boolean>;
-
   constructor(private darkModeService: DarkModeService) {
-    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!; // Utilisation du non-null assertion operator
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
   }
 
   toggleDarkMode() {

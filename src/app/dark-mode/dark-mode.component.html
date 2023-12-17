@@ -1,6 +1,7 @@
-
-<label for="darkModeToggle" (click)="$event.preventDefault()">
-    Mode Sombre
-  </label>
-  <input type="checkbox" id="darkModeToggle" [checked]="isDarkMode" (change)="toggleDarkMode()" />
-  
+<div class="switch-container" (click)="toggleDarkMode(); $event.preventDefault()">
+  <label for="darkModeToggle">Mode sombre </label>
+  <div class="switch">
+    <input type="checkbox" id="darkModeToggle" [checked]="isDarkMode" />
+    <div class="slider"></div>
+  </div>
+</div>

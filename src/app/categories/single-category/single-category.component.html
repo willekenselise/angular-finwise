@@ -1,7 +1,7 @@
 <div *ngIf="category">
   <h2>{{ category.name }}</h2>
 
-  <table class="table">
+  <table class="table" [class.dark-mode-table]="isDarkMode$ | async">
     <thead>
       <tr>
         <th>Transaction</th>

@@ -2,14 +2,14 @@
 
   <div class="list-section-header">
     <h2>Liste des transactions</h2>
-    <button class="button-add-datas" (click)="toggleAddExpenseVisibility()">
+    <button class="button-add-datas" (click)="toggleAddExpenseVisibility()" [class.dark-mode]="isDarkMode$ | async">
       + ajouter
     </button>
   </div>
 
   <app-add-expense *ngIf="isAddExpenseVisible"></app-add-expense>
 
-  <table class="table">
+  <table class="table" [class.dark-mode-table]="isDarkMode$ | async">
     <thead>
       <tr>
         <th>Transaction</th>

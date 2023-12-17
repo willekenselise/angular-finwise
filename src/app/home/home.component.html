@@ -3,7 +3,7 @@
     <app-total></app-total>
     <div class="home-section-header">
       <h2>Catégories</h2>
-      <button class="button-all-datas" (click)="navigateToCategories()">
+      <button class="button-all-datas" (click)="navigateToCategories()"  [class.dark-mode]="isDarkMode$ | async">
         voir tout
       </button>
     </div>
@@ -29,11 +29,11 @@
   <section>
     <div class="home-section-header">
       <h2>Dépenses récentes</h2>
-      <button class="button-all-datas" (click)="navigateToExpenses()">
+      <button class="button-all-datas" (click)="navigateToExpenses()"  [class.dark-mode]="isDarkMode$ | async">
         voir tout
       </button>
     </div>
-    <table class="table">
+    <table class="table" [class.dark-mode-table]="isDarkMode$ | async">
       <thead>
         <tr>
           <th>Transaction</th>

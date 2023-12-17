@@ -11,8 +11,6 @@ export class DarkModeComponent {
   @Input() isDarkMode: boolean | null = false;
   @Output() darkModeToggled = new EventEmitter<void>();
 
-  constructor(private darkModeService: DarkModeService) {}
-
   toggleDarkMode() {
     this.darkModeToggled.emit();
   }

@@ -4,7 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { ExpensesService } from './expenses.service';
 
 @Injectable({
@@ -60,11 +60,12 @@ export class CategoriesService {
   getTotalAmountByCategory(maxCategories: number): Promise<{ cat: Category; totalAmount: string }[]> {
     return new Promise<{ cat: Category; totalAmount: string }[]>((resolve) => {
       let categoriesSelected: { cat: Category; totalAmount: string }[] = [];
-      this.getAllCategories().subscribe((categories: Category[]) => {
+      const subscription = this.getAllCategories().subscribe((categories: Category[]) => {
         let count = 0;
         categories.forEach((category) => {
           this.expensesService
             .getExpensesByCategoryAndUser(category.uid)
+            .pipe(take(1)) 
             .subscribe((totalAmount: string) => {
               if (count < maxCategories) {
                 categoriesSelected.push({
@@ -74,6 +75,7 @@ export class CategoriesService {
                 count++;
               }
               if (count === maxCategories) {
+                subscription.unsubscribe(); 
                 resolve(categoriesSelected);
               }
             });
