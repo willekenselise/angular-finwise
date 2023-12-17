@@ -12,7 +12,7 @@ import { Category } from '../models/category';
 })
 export class HomeComponent implements OnInit {
   firstThreeCategories$: any;
-  tabColor = ['#b871ffb1', '#ee7fab9c', "#edb949c9"]
+  tabColor = ['#b871ffb1', '#ee7fab9c', '#edb949c9'];
 
   constructor(
     private expensesService: ExpensesService,
@@ -34,20 +34,27 @@ export class HomeComponent implements OnInit {
         )
         .slice(0, 5);
     });
-    this.getTotalAmountByCategory()
+    this.getTotalAmountByCategory();
   }
-
 
   async getTotalAmountByCategory(): Promise<void> {
     try {
-      this.firstThreeCategories = await this.categoriesService.getTotalAmountByCategory(3);
+      this.firstThreeCategories =
+        await this.categoriesService.getTotalAmountByCategory(3);
       console.log(this.firstThreeCategories);
     } catch (error) {
-      console.error("Error fetching categories:", error);
+      console.error('Error fetching categories:', error);
     }
   }
-  
-  
+
+  navigateToExpenseSingle(expenseId: string): void {
+    this.router.navigate(['/expenses', expenseId]);
+  }
+
+  navigateToCategorySingle(categoryId: string): void {
+    this.router.navigate(['/categories', categoryId]);
+  }
+
 
   navigateToCategories(): void {
     this.router.navigate(['/categories']);
@@ -56,5 +63,4 @@ export class HomeComponent implements OnInit {
   navigateToExpenses(): void {
     this.router.navigate(['/expenses']);
   }
-
 }

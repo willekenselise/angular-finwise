@@ -26,6 +26,8 @@ export class SingleExpenseComponent {
     if (expenseId) {
       this.expensesService.getExpenseById(expenseId).subscribe((expense) => {
         this.expense = expense;
+        console.log(expense);
+        
       });
     }
   }

@@ -14,13 +14,13 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 import { SingleCategoryComponent } from './categories/single-category/single-category.component';
 import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [AuthGuard]
-
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
-    runGuardsAndResolvers: 'always'
+    runGuardsAndResolvers: 'always',
   },
   {
     path: 'logout',
@@ -45,47 +45,46 @@ const routes: Routes = [
   {
     path: 'categories',
     component: ListCategoryComponent,
-    canActivate: [AuthGuard]
-
+    canActivate: [AuthGuard],
   },
   {
     path: 'categories/:id',
     component: SingleCategoryComponent,
-    canActivate: [AuthGuard]
-
+    canActivate: [AuthGuard],
   },
   {
     path: 'expenses/:id',
     component: SingleExpenseComponent,
-    canActivate: [AuthGuard]
-
+    canActivate: [AuthGuard],
   },
   {
     path: 'add-category',
     component: AddCategoryComponent,
-    canActivate: [AuthGuard]
-
+    canActivate: [AuthGuard],
   },
-  { path: 'edit-category/:id',
-   component: EditCategoryComponent,
-   canActivate: [AuthGuard]
-
+  {
+    path: 'edit-category/:id',
+    component: EditCategoryComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'expenses',
     component: ListExpenseComponent,
-    canActivate: [AuthGuard]
-
+    canActivate: [AuthGuard],
   },
   {
     path: 'add-expense',
     component: AddExpenseComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-expense/:id',
     component: EditExpenseComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
   }
 ];
 

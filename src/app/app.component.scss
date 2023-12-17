@@ -1,13 +1,19 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    background-color: #ffffffbb;
-    border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: #ffffffbb;
+  border-radius: 25px;
 
-    .title {
-        text-align: center;
-        font-size: 40px;
-    }
-
+  .title {
+    text-align: center;
+    font-size: 40px;
+    font-family: "Paytone One", sans-serif;
+  }
+}
+.header {
+  padding: 0 32px;
+}
+main {
+  padding: 32px;
 }

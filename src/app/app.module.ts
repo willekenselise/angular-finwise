@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 
 // Components
 import { LoginComponent } from './auth/login/login.component';
@@ -64,6 +65,7 @@ import { SingleExpenseComponent } from './expenses/single-expense/single-expense
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
