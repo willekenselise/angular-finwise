@@ -16,6 +16,7 @@
         <th>Montant</th>
         <th>Date</th>
         <th>Description</th>
+        <th>Catégories</th>
         <th>Type</th>
         <th>Action</th>
       </tr>
@@ -24,9 +25,11 @@
       <tr *ngFor="let expense of expenses">
         <td>{{ expense.transactionName }}</td>
         <td>{{ expense.amount }} €</td>
-        <td>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</td>
         <td>{{ expense.transactionDate | frenchDate }}</td>
         <td>{{ expense.description }}</td>
+        <td>
+          {{ expense.categoryId | getCategoryName  | async}}
+        </td>
         <td
           [class.depense]="expense.transactionNature === 'débit'"
           [class.credit]="expense.transactionNature === 'crédit'"

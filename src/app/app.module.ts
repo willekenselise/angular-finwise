@@ -34,7 +34,8 @@ import { SingleCategoryComponent } from './categories/single-category/single-cat
 import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
 import { TotalComponent } from './expenses/total/total.component';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
-import { FrenchDatePipe } from './pipes/french-date.pipe';
+import { FrenchDatePipe } from './shared/pipes/french-date.pipe';
+import { GetCategoryNamePipe } from './shared/pipes/get-category-name.pipe';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
 @NgModule({
@@ -57,7 +58,8 @@ import { DarkModeComponent } from './dark-mode/dark-mode.component';
     TotalComponent,
     ResetPasswordComponent,
     FrenchDatePipe,
-    DarkModeComponent
+    DarkModeComponent,
+    GetCategoryNamePipe
   ],
   imports: [
     MatCardModule,

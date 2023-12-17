@@ -46,7 +46,11 @@ export class ListCategoryComponent implements OnInit {
   }
 
   deleteCategory(category: Category): void {
-    this.categoriesService.deleteCategory(category);
+    const confirmation = window.confirm('Veut tu supprimer cette catégorie? Les dépenses associées seront supprimées aussi');
+    
+    if (confirmation) {
+      this.categoriesService.deleteCategory(category)
+    }
   }
 
   navigateToEditCategory(category: Category): void {

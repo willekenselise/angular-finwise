@@ -4,7 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Observable, take } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { ExpensesService } from './expenses.service';
 
 @Injectable({
@@ -35,6 +35,13 @@ export class CategoriesService {
       .valueChanges() as Observable<Category>;
   }
 
+  getCategoryNameById(categoryId: string): Observable<string> {
+    return this.firestore
+      .doc<any>(`categories/${categoryId}`)
+      .valueChanges()
+      .pipe(map((category: any) => (category ? category.name : 'Unknown Category')));
+  }
+
   addCategory(category: Category): Promise<Category> {
     const newCategoryId = this.catagoriesCollection.ref.doc().id;
     const newCategory: Category = {
@@ -50,6 +57,11 @@ export class CategoriesService {
   }
 
   deleteCategory(category: Category): Promise<void> {
+    this.expensesService.getExpensesByCategory(category.uid).subscribe((expenses) => {
+      expenses.forEach((expense) => {
+        this.expensesService.deleteExpense(expense);
+      });
+    })
     return this.catagoriesCollection.doc(category.uid).delete();
   }
 
