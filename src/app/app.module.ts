@@ -20,7 +20,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HeaderComponent } from './home/header/header.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './account/profile/profile.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
@@ -33,6 +33,8 @@ import { MatCardModule } from '@angular/material/card';
 import { SingleCategoryComponent } from './categories/single-category/single-category.component';
 import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
 import { TotalComponent } from './expenses/total/total.component';
+import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
+import { FrenchDatePipe } from './pipes/french-date.pipe';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { TotalComponent } from './expenses/total/total.component';
     SingleCategoryComponent,
     SingleExpenseComponent,
     TotalComponent
+    ResetPasswordComponent,
+    FrenchDatePipe
   ],
   imports: [
     MatCardModule,

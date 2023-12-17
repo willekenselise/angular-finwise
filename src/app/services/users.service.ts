@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AuthService } from './auth.service';
+import { getAuth, updateProfile } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root',
@@ -53,13 +54,13 @@ export class UsersService {
     });
   }
 
-  updateUserPhoto(user: any) {
+  updateUserPhoto(user: any, photoURL: string) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${user.uid}`
     );
 
     const userData = {
-      photoURL: user.photoURL,
+      photoURL: photoURL,
     };
 
     return userRef.set(userData, {
