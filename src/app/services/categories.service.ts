@@ -57,6 +57,11 @@ export class CategoriesService {
   }
 
   deleteCategory(category: Category): Promise<void> {
+    this.expensesService.getExpensesByCategory(category.uid).subscribe((expenses) => {
+      expenses.forEach((expense) => {
+        this.expensesService.deleteExpense(expense);
+      });
+    })
     return this.catagoriesCollection.doc(category.uid).delete();
   }
 
