@@ -1,7 +1,7 @@
 <section>
   <div class="list-section-header">
     <h2>Liste des transactions</h2>
-    <button class="button" (click)="toggleAddExpenseVisibility()">
+    <button class="button" (click)="toggleAddExpenseVisibility()" [class.dark-mode]="isDarkMode$ | async">
       <mat-icon
         class="icon-action"
         aria-hidden="false"
@@ -12,5 +12,6 @@
     </button>
   </div>
   <app-add-expense *ngIf="isAddExpenseVisible"></app-add-expense>
-  <app-table-expenses [expenses]="expenses"></app-table-expenses>
+  <app-table-expenses [expenses]="expenses" [class.dark-mode-table]="isDarkMode$ | async"></app-table-expenses>
+
 </section>

@@ -4,6 +4,8 @@ import { CategoriesService } from '../../services/categories.service';
 import { ExpensesService } from '../../services/expenses.service';
 import { Category } from '../../models/category';
 import { Expense } from '../../models/expense';
+import { Observable, of } from 'rxjs';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-single-category',
@@ -13,16 +15,24 @@ import { Expense } from '../../models/expense';
 export class SingleCategoryComponent implements OnInit {
   category: Category | undefined;
   expenses: Expense[] = [];
+  isDarkMode$: Observable<boolean>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private categoriesService: CategoriesService,
-    private expensesService: ExpensesService
-  ) {}
+    private expensesService: ExpensesService,
+    private darkModeService: DarkModeService,
+  ) {
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
+  }
 
   ngOnInit(): void {
     this.loadCategory();
+  }
+
+  toggleDarkMode() {
+    this.darkModeService.toggleDarkMode();
   }
 
   navigateToExpense(expense: Expense): void {
@@ -37,7 +47,6 @@ export class SingleCategoryComponent implements OnInit {
         .getCategoryById(categoryId)
         .subscribe((category) => {
           this.category = category;
-
           this.expensesService
             .getExpensesByCategory(categoryId)
             .subscribe((expenses) => {

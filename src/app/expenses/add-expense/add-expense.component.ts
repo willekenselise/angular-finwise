@@ -5,6 +5,7 @@ import { ExpensesService } from '../../services/expenses.service';
 import { Expense } from '../../models/expense';
 import { Category } from '../../models/category';
 import { CategoriesService } from '../../services/categories.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-expense',
@@ -19,7 +20,8 @@ export class AddExpenseComponent implements OnInit{
     private router: Router,
     private categoriesService: CategoriesService,
     private expenesesService: ExpensesService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
   ) {
     this.expenseForm = this.formBuilder.group({
       amount: ['', Validators.required],
@@ -55,12 +57,12 @@ export class AddExpenseComponent implements OnInit{
       };
       try {
         await this.expenesesService.addExpense(newExpense);
-        console.log('Expense added !');
+        this.snackBar.open('Dépense ajouté', 'OK', {duration: 5000});
         this.expenseForm.reset();
         this.router.navigate(['expenses']);
       } catch (error) {
         this.expenseForm.reset();
-        console.error('Error adding expense:', error);
+        this.snackBar.open('Erreur dans l\'ajout', 'OK', {duration: 5000});
       }
     }
   }

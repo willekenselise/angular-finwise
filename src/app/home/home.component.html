@@ -7,7 +7,7 @@
 
     <div class="header">
       <h2>Catégories</h2>
-      <button class="button" (click)="navigateToExpenses()">
+      <button class="button" (click)="navigateToExpenses()" [class.dark-mode]="isDarkMode$ | async">
         voir plus
         <mat-icon
           class="icon-action"
@@ -15,7 +15,6 @@
           aria-label="arrow_forward icon"
           fontIcon="arrow_forward"
         ></mat-icon>
-      </button>
     </div>
     <div class="card-container">
       <mat-card

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UsersService } from '../../services/users.service';
-import { User } from '../../models/user';
+import { DarkModeService } from '../../services/dark-mode.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -11,20 +12,20 @@ import { User } from '../../models/user';
 })
 export class HeaderComponent implements OnInit {
   fullName: string | undefined;
+  isDarkMode$: Observable<boolean>;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private userService: UsersService
-  ) {}
+    private userService: UsersService,
+    private darkModeService: DarkModeService
+  ) {
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
+  }
 
   isAuthenticated: boolean = false;
 
   ngOnInit() {
-    // this.authService.currentAuthStatus$.subscribe((isAuthenticated) => {
-    //   this.isAuthenticated = !!isAuthenticated;
-    //   console.log(this.isAuthenticated);
-    // })
     this.authService.getUserState.subscribe((user) => {
       this.isAuthenticated = !!user;
     });

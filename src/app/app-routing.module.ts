@@ -14,14 +14,14 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
 import { SingleCategoryComponent } from './categories/single-category/single-category.component';
 import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
 
 const routes: Routes = [
   
   {
     path: '',
-    component: WelcomeComponent,
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
