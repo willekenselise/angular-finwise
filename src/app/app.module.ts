@@ -30,6 +30,7 @@ import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.compo
 import { HomeComponent } from './home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
+import { FrenchDatePipe } from './pipes/french-date.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ResetPasswordComponent } from './account/reset-password/reset-password.
     ProfileComponent,
     LogoutComponent,
     ResetPasswordComponent,
+    FrenchDatePipe,
   ],
   imports: [
     MatCardModule,
