@@ -37,8 +37,12 @@
   color: #888;
 }
 
-.buttons-wrapper{
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark-mode {
+  color: #fff !important;
 }

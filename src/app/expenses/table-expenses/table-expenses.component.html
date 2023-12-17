@@ -1,10 +1,11 @@
-<table class="table">
+<table class="table" [class.dark-mode-table]="isDarkMode$ | async">
     <thead>
       <tr>
         <th>Transaction</th>
         <th>Montant</th>
         <th>Date</th>
         <th>Description</th>
+        <th>Catégories</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -24,8 +25,11 @@
           ></mat-icon>
           {{ expense.amount }} €
         </td>
-        <td>{{ expense.transactionDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ expense.transactionDate | frenchDate }}</td>
         <td>{{ expense.description }}</td>
+        <td>
+          {{ expense.categoryId | getCategoryName  | async}}
+        </td>
         <td class="actions">
           <mat-icon
             class="icon-action"

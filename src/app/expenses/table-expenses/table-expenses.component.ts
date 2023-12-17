@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Expense } from '../../models/expense';
 import { Router } from '@angular/router';
 import { ExpensesService } from '../../services/expenses.service';
+import { Observable, of } from 'rxjs';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-table-expenses',
@@ -9,8 +11,15 @@ import { ExpensesService } from '../../services/expenses.service';
   styleUrl: './table-expenses.component.scss'
 })
 export class TableExpensesComponent {
+  isDarkMode$: Observable<boolean>;
 
-  constructor(private router: Router, private expensesService: ExpensesService) {}
+  constructor(
+    private router: Router,
+    private darkModeService: DarkModeService,
+    private expensesService: ExpensesService
+  ) {
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
+  }
 
   @Input() expenses: Expense[] = [];
 

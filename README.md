@@ -31,8 +31,9 @@ To connect your Angular application to Firebase, you need to configure the envir
 
 1. Create a Firebase project on the [Firebase Console](https://console.firebase.google.com/)
 2. Obtain your Firebase project credentials, including the API key, project ID, and other necessary information
-3. Create a new file named `environment.ts`and `environment.development.ts` in the `src/environments` directory.
-4. Open the `environment.ts` and `environment.development.ts` files and add the following code:
+3. Active FireAuth and FireStorage for authentification and storage
+4. Create a new file named `environment.ts`and `environment.development.ts` in the `src/environments` directory.
+5. Open the `environment.ts` and `environment.development.ts` files and add the following code:
 
 ```
 export const environment = {
@@ -42,7 +43,7 @@ export const environment = {
     }
 };
 ```
-5. Save the file and run your Angular ap
+6. Save the file and run your Angular app
 
 
 ## Usage
@@ -51,7 +52,7 @@ To use the expense tracker app, follow these steps:
 
 1. Start the development server: `npm start`
 2. Open your web browser and navigate to `http://localhost:4200`
-3. Sign up or log in to your account
+3. Sign up or log in to your account (with a real email or use  [tempmail](https://temp-mail.org/fr/) )
 4. Start adding your expenses and managing your budget
 
 ## Implemented Functionality
@@ -68,10 +69,16 @@ To use the expense tracker app, follow these steps:
 - Reset Password with your email
 - Add a profile picture
 
-### Category Expenses
+### Category for Expenses
 
 - Add, edit, and delete expenses for each category
 - Add new categories
 
 ### List of all Expenses
 
+- Single expense view
+- List of all expense
+
+### Graph
+
+- Little graph off all outcome and income

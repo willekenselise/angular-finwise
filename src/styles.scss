@@ -1,13 +1,6 @@
 html {
   margin: 0;
   height: 100%;
-  background: rgb(255, 216, 191);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 216, 191, 0.9836309523809523) 0%,
-    rgba(255, 232, 236, 1) 50%,
-    rgba(249, 217, 255, 1) 100%
-  );
 }
 
 body {
@@ -98,6 +91,7 @@ body{
     background-color: #2d2d2d;
     color: #fff;
   }
+  width: fit-content;
 }
   
   @media screen and (max-width: 768px) {

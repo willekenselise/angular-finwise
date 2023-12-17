@@ -6,6 +6,8 @@ import { Expense } from '../../models/expense';
 import { Category } from '../../models/category';
 import { CategoriesService } from '../../services/categories.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DarkModeService } from '../../services/dark-mode.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-add-expense',
@@ -14,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddExpenseComponent implements OnInit{
   expenseForm: FormGroup;
+  isDarkMode$: Observable<boolean>;
   categories: Category[] = [];
 
   constructor(
@@ -21,7 +24,8 @@ export class AddExpenseComponent implements OnInit{
     private categoriesService: CategoriesService,
     private expenesesService: ExpensesService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private darkModeService: DarkModeService,
   ) {
     this.expenseForm = this.formBuilder.group({
       amount: ['', Validators.required],
@@ -31,6 +35,7 @@ export class AddExpenseComponent implements OnInit{
       transactionDate: ['', Validators.required],
       categoryId: ['', Validators.required],
     });
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
   }
 
   ngOnInit(): void {
@@ -40,6 +45,7 @@ export class AddExpenseComponent implements OnInit{
   }
 
   async addExpense(): Promise<void> {
+    console.log('expenseForm', this.expenseForm)
     if (this.expenseForm.valid) {
       const newExpense: Expense = {
         uid: '',
@@ -64,6 +70,9 @@ export class AddExpenseComponent implements OnInit{
         this.expenseForm.reset();
         this.snackBar.open('Erreur dans l\'ajout', 'OK', {duration: 5000});
       }
+    }
+    else{
+      this.snackBar.open('Formulaire invalide', 'OK', {duration: 5000});
     }
   }
 }

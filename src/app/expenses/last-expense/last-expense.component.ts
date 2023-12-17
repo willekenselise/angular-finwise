@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ExpensesService } from '../../services/expenses.service';
 import { Router } from '@angular/router';
 import { Expense } from '../../models/expense';
+import { DarkModeService } from '../../services/dark-mode.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-last-expense',
@@ -9,13 +11,18 @@ import { Expense } from '../../models/expense';
   styleUrl: './last-expense.component.scss',
 })
 export class LastExpenseComponent {
-  constructor(
-    private router: Router,
-    private expensesService: ExpensesService
-  ) {}
-
+  isDarkMode$: Observable<boolean>;
   lastExpenses: Expense[] = [];
   isAddExpenseVisible = false;
+  
+  constructor(
+    private router: Router,
+    private darkModeService: DarkModeService,
+    private expensesService: ExpensesService
+  ) {
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
+  }
+
 
   ngOnInit(): void {
     this.expensesService.getExpensesByUserId().subscribe((expenses) => {
