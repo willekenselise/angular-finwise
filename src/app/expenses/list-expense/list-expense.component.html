@@ -21,7 +21,7 @@
       <tr *ngFor="let expense of expenses">
         <td>{{ expense.transactionName }}</td>
         <td>{{ expense.amount }} €</td>
-        <td>{{ expense.transactionDate | date:'dd MMMM yyyy'}}</td>
+        <td>{{ expense.transactionDate | frenchDate }}</td>
         <td>{{ expense.description }}</td>
         <td [class.depense]="expense.transactionNature === 'débit'" [class.credit]="expense.transactionNature === 'crédit'">
           {{ expense.transactionNature }}
