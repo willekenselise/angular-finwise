@@ -81,4 +81,4 @@ To use the expense tracker app, follow these steps:
 
 ### Graph
 
-- Little graph off all outcome and income
+- Little graph of all outcome and income

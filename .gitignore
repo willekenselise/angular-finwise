@@ -41,11 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Env files
-src/environments/environment.development.ts
-src/environments/environment.prod.ts
-src/environments/environment.ts
-
 # Firebase
 .firebase
 *-debug.log
