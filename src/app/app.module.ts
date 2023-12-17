@@ -36,6 +36,7 @@ import { TotalComponent } from './expenses/total/total.component';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
 import { FrenchDatePipe } from './shared/pipes/french-date.pipe';
 import { GetCategoryNamePipe } from './shared/pipes/get-category-name.pipe';
+import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { GetCategoryNamePipe } from './shared/pipes/get-category-name.pipe';
     TotalComponent,
     ResetPasswordComponent,
     FrenchDatePipe,
+    DarkModeComponent,
     GetCategoryNamePipe
   ],
   imports: [

@@ -1,9 +1,12 @@
+:host {
+    flex-grow: 1;
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
 }
 
 form {
@@ -14,7 +17,7 @@ form {
 
     button,
     mat-form-field {
-        width: -webkit-fill-available; // allow the form to take up the full width of the screen
+        width: -webkit-fill-available; 
     }
     mat-form-field {
         margin-bottom: 15px;

@@ -18,38 +18,45 @@
         text-decoration: underline;
     }
 }
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-  }
-  
-  .category-card {
+}
+
+.category-card {
     background-color: #fff;
     color: #2d2d2d;
-    .category-card-header{
+    border: 1px solid hsla(12, 84%, 68%, 1);
+
+    .category-card-header {
         display: flex;
         justify-content: space-between;
+
         .card-title {
             font-size: 18px;
             text-transform: capitalize;
             padding: 0 0px 16px;
             font-weight: 700;
         }
-        .card-action{
+
+        .card-action {
             display: flex;
             gap: 20px;
-            .icon-action:hover{
+
+            .icon-action:hover {
                 cursor: pointer;
             }
         }
     }
-  }
-  
+}
 
-  
-  .card-amount {
+.card-amount {
     font-size: 30px;
     font-weight: 900;
-  }
-  
+}
+
+.dark-mode {
+    color: #fff !important;
+}

@@ -64,6 +64,15 @@
   }
 }
 
+.dark-mode-table{
+  background-color: #2d2d2d;
+}
+
+.dark-mode {
+  color: #fff!important;
+}
+
+
 @media screen and (max-width: 768px) {
   .expense-card {
     width: 100% !important;

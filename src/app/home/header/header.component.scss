@@ -5,12 +5,16 @@
     color: black;
     align-items: center;
 
-    ul{
+    ul {
         display: flex;
         list-style: none;
     }
 
-    .mat-mdc-button:not(:disabled){
+    .mat-mdc-button:not(:disabled) {
         color: black;
     }
+}
+
+.dark-mode {
+    color: #fff!important;
 }

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../models/category';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-list-category',
@@ -11,14 +13,18 @@ import { Router } from '@angular/router';
 export class ListCategoryComponent implements OnInit {
   constructor(
     private router: Router,
+    private darkModeService: DarkModeService,
     private categoriesService: CategoriesService,
-  ) {}
+  ) {
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
+  }
 
   @Input() categoriesDisplay: Category[] = [];
 
   categories: { cat: Category; totalAmount: string }[] = [];
-  tabColor = ['#b871ffb1', '#ee7fab9c', "#edb949c9"]
+  borderColors: string[] = [];
   isAddCategoryVisible = false
+  isDarkMode$: Observable<boolean>;
 
 
   ngOnInit(): void {
@@ -29,8 +35,14 @@ export class ListCategoryComponent implements OnInit {
     });
   }
 
+
+
   toggleAddCategoryVisibility(): void {
     this.isAddCategoryVisible = !this.isAddCategoryVisible;
+  }
+  
+  toggleDarkMode() {
+    this.darkModeService.toggleDarkMode();
   }
 
   deleteCategory(category: Category): void {
@@ -43,11 +55,6 @@ export class ListCategoryComponent implements OnInit {
 
   navigateToEditCategory(category: Category): void {
     this.router.navigate(['edit-category', category.uid]);
-  }
-
-  getRandomColor(): string {
-    const randomIndex = Math.floor(Math.random() * this.tabColor.length);
-    return `0.5px solid ${this.tabColor[randomIndex]}`;
   }
 
   navigateToCategorySingle(categoryId: string): void {
