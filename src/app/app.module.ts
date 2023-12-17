@@ -53,7 +53,7 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     LogoutComponent,
     SingleCategoryComponent,
     SingleExpenseComponent,
-    TotalComponent
+    TotalComponent,
     ResetPasswordComponent,
     FrenchDatePipe
   ],
@@ -74,6 +74,6 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     MatMenuModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -85,8 +85,7 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    component: WelcomeComponent,
-    canActivate: [AuthGuard]
+    component: WelcomeComponent
   },
   {
     path: 'auth',
