@@ -18,8 +18,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
 
 const routes: Routes = [
+  
   {
     path: '',
+    component: WelcomeComponent,
+  },
+  {
+    path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
   },
@@ -82,11 +87,6 @@ const routes: Routes = [
     path: 'edit-expense/:id',
     component: EditExpenseComponent,
     canActivate: [AuthGuard],
-  },
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'auth',

@@ -53,7 +53,7 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     LogoutComponent,
     SingleCategoryComponent,
     SingleExpenseComponent,
-    TotalComponent
+    TotalComponent,
     ResetPasswordComponent,
     FrenchDatePipe
   ],
