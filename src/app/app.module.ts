@@ -34,7 +34,8 @@ import { SingleCategoryComponent } from './categories/single-category/single-cat
 import { SingleExpenseComponent } from './expenses/single-expense/single-expense.component';
 import { TotalComponent } from './expenses/total/total.component';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
-import { FrenchDatePipe } from './pipes/french-date.pipe';
+import { FrenchDatePipe } from './shared/pipes/french-date.pipe';
+import { GetCategoryNamePipe } from './shared/pipes/get-category-name.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     SingleExpenseComponent,
     TotalComponent,
     ResetPasswordComponent,
-    FrenchDatePipe
+    FrenchDatePipe,
+    GetCategoryNamePipe
   ],
   imports: [
     MatCardModule,

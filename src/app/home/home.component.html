@@ -40,6 +40,7 @@
           <th>Montant</th>
           <th>Date</th>
           <th>Description</th>
+		  <th>Catégories</th>
           <th>Type</th>
           <th>Action</th>
         </tr>
@@ -53,6 +54,9 @@
           </td>
           <td>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</td>
           <td>{{ expense.description }}</td>
+		  <td>
+			{{ expense.categoryId | getCategoryName  | async}}
+		  </td>
           <td>
             <div>
               <td

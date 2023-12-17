@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Category } from '../../models/category';
 import { Router } from '@angular/router';
 
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 export class ListCategoryComponent implements OnInit {
   constructor(
     private router: Router,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
   ) {}
 
   @Input() categoriesDisplay: Category[] = [];
@@ -35,7 +34,11 @@ export class ListCategoryComponent implements OnInit {
   }
 
   deleteCategory(category: Category): void {
-    this.categoriesService.deleteCategory(category);
+    const confirmation = window.confirm('Veut tu supprimer cette catégorie? Les dépenses associées seront supprimées aussi');
+    
+    if (confirmation) {
+      this.categoriesService.deleteCategory(category)
+    }
   }
 
   navigateToEditCategory(category: Category): void {
