@@ -1,0 +1,51 @@
+<div class="profile-card">
+  <div *ngIf="userInformation as user">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <!-- User's Picture -->
+        <img src="{{(user.photoURL) ? user.photoURL : 'assets/dummy-user.jpg'}}" alt="{{user.displayName}}">
+        <!-- Edit Picture Icon -->
+        <div class="edit-icon">
+          <mat-icon (click)="inputField.click()">edit</mat-icon>
+        </div>
+        <input #inputField hidden type="file" (change)="onFileSelected($event)" />
+      </div>
+      <div class="user-info">
+        <!-- User's Name -->
+        <h1>
+          {{(user.displayName) ? user.displayName : 'User'}}
+        </h1>
+      </div>
+    </div>
+    <div class="profile-actions">
+        <form class="form-style" [formGroup]="frmPasswordReset" (submit)="sendPasswordResetRequest()">
+          <h2>Password Reset</h2>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex: moi@example.com" formControlName="email">
+            <mat-error *ngIf="frmPasswordReset.get('email')!.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="frmPasswordReset.get('email')!.hasError('email')">
+              Email is invalid
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="frmPasswordReset.invalid">
+            send
+            <mat-icon>send</mat-icon>
+          </button>
+        </form>
+        <form class="form-style name-form" [formGroup]="displayNameFormm" (ngSubmit)="upadateUserDisplayName(user.uid)">
+          <h2>Update Display Name</h2>
+          <mat-form-field class="name-field">
+            <input type="text" matInput placeholder="Enter name" formControlName="pseudo" />
+            <mat-icon>person</mat-icon>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="frmPasswordReset.invalid">
+            send
+            <mat-icon>send</mat-icon>
+          </button>
+        </form>
+      </div>
+      
+</div>

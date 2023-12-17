@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AuthService } from './auth.service';
+import { getAuth, updateProfile } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root',

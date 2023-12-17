@@ -8,10 +8,11 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { ListExpenseComponent } from './expenses/list-expense/list-expense.component';
 import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './account/profile/profile.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { EditExpenseComponent } from './expenses/edit-expense/edit-expense.component';
+import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -72,7 +73,22 @@ const routes: Routes = [
     path: 'edit-expense/:id',
     component: EditExpenseComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'auth',
+    children: [
+      {
+        path: 'action',
+        component: ResetPasswordComponent,
+        data: { title: 'Forgot Password' }
+      },
+      // {
+      //   path: 'email/action',
+      //   // component: EmailConfirmationComponent,
+      //   data: { title: 'Confirm Email Address' }
+      // }
+    ]
+  },
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@
                 Password is required
             </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">
+        <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">
             LOGIN
         </button>
         <p class="text-color">Don't Have an Account? <a routerLink="/register" class="text-color bold">Register</a></p>
