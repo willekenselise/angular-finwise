@@ -4,8 +4,9 @@ To connect your Angular application to Firebase, you need to configure the envir
 
 1. Create a Firebase project on the [Firebase Console](https://console.firebase.google.com/)
 2. Obtain your Firebase project credentials, including the API key, project ID, and other necessary information
-3. Create a new file named `environment.ts`and `environment.development.ts` in the `src/environments` directory.
-4. Open the `environment.ts` and `environment.development.ts` files and add the following code:
+3. Active FireAuth and FireStorage for authentification and storage
+4. Create a new file named `environment.ts`and `environment.development.ts` in the `src/environments` directory.
+5. Open the `environment.ts` and `environment.development.ts` files and add the following code:
 
 ```
 export const environment = {
@@ -15,4 +16,4 @@ export const environment = {
     }
 };
 ```
-5. Save the file and run your Angular app
+6. Save the file and run your Angular app

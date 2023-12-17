@@ -1,5 +1,7 @@
-<header class="header" *ngIf="isAuthenticated" >
-  <button mat-button routerLink="/home"  [class.dark-mode]="isDarkMode$ | async">Home</button>
+<header class="header" *ngIf="isAuthenticated">
+  <ul>
+    <button mat-button routerLink="/home" [class.dark-mode]="isDarkMode$ | async">Accueil</button>
+  </ul>
 
   <button mat-button [matMenuTriggerFor]="profileMenu"  [class.dark-mode]="isDarkMode$ | async">
     {{ fullName }}
@@ -12,7 +14,7 @@
   </button>
 
   <mat-menu #profileMenu="matMenu" yPosition="below">
-    <button mat-menu-item routerLink="/profile" >Profile</button>
-    <button mat-menu-item (click)="logout()">Log Out</button>
+    <button mat-menu-item routerLink="/profile">Profil</button>
+    <button mat-menu-item (click)="logout()">Déconnexion</button>
   </mat-menu>
 </header>

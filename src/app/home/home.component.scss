@@ -30,6 +30,9 @@
 .card-container {
   display: flex;
   gap: 20px;
+  width: 100%;
+  margin-bottom: 60px;
+  justify-content: space-evenly;
   .expense-card {
     width: 33%;
     color: #fff;
@@ -48,20 +51,16 @@
   }
 }
 
-.home-section-header {
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  .button-all-datas {
-    font-weight: 900;
-    font-size: 15px;
-    background-color: transparent;
-    color: #2d2d2d;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
-  }
+}
+.home-section-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .dark-mode-table{

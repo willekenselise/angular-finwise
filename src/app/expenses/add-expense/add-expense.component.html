@@ -1,7 +1,7 @@
 <form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
     <div>
         <label for="amount">Montant:</label>
-        <input class="rounded-input" type="number" id="amount" formControlName="amount" required>
+        <input class="rounded-input" type="number" id="amount" formControlName="amount" required min="0">
     </div>
 
     <div>
@@ -32,11 +32,14 @@
     <div>
         <label for="categoryId">Catégorie:</label>
         <select class="rounded-input" id="categoryId" formControlName="categoryId" required>
+            <option selected></option>
             <option *ngFor="let category of categories" [value]="category.uid">{{ category.name }}</option>
         </select>
         <details>
             <summary>
-                <div class="button">
+                <div class="button"
+      [class.dark-mode]="isDarkMode$ | async"
+      >
                     <mat-icon class="add-category-icon" >add_circle</mat-icon>
                 </div>
                 <div class="details-modal-overlay"></div>

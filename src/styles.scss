@@ -1,4 +1,13 @@
 html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: calc(100% - 60px);
+  padding: 30px;
     margin: 0;
     height: 100%;
     background: hsla(12, 84%, 68%, 1);
@@ -24,19 +33,66 @@ body{
 }
 
 .table {
-    width: 100%;
-    background-color: #fff;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    overflow-x: auto;
-  }
-  
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.table th,
+.table td {
+  padding: 20px;
+  text-align: left;
+}
+
+@media screen and (max-width: 768px) {
   .table th,
   .table td {
-    padding: 20px;
-    text-align: left;
+    display: block;
+    text-align: center;
+    padding: 10px;
   }
+
+  .table tbody tr {
+    margin-bottom: 15px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .table tbody tr td {
+    border-bottom: none;
+  }
+
+  .table thead,
+  .table tbody td:nth-child(4) {
+    display: none;
+  }
+}
+
+.button {
+  font-weight: 600;
+  background-color: transparent;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2d2d2d;
+  cursor: pointer;
+  border: 2px solid #2d2d2d;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #2d2d2d;
+    color: #fff;
+  }
+  width: fit-content;
+}
   
   @media screen and (max-width: 768px) {
     .table th,

@@ -1,8 +1,18 @@
 <section>
   <div class="list-section-header">
     <h2>Liste des catégories</h2>
-    <button class="button-add-datas" (click)="toggleAddCategoryVisibility()" [class.dark-mode]="isDarkMode$ | async">
-      + ajouter
+    <button
+      class="button"
+      (click)="toggleAddCategoryVisibility()"
+      [class.dark-mode]="isDarkMode$ | async"
+    >
+      <mat-icon
+        class="icon-action"
+        aria-hidden="false"
+        aria-label="add icon"
+        fontIcon="add"
+      ></mat-icon>
+      ajouter
     </button>
   </div>
 
@@ -23,7 +33,6 @@
           category.cat.name
         }}</mat-card-title>
         <div class="card-action">
-
           <mat-icon
             class="icon-action"
             (click)="navigateToCategorySingle(category.cat.uid)"

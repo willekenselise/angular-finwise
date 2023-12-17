@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import{ FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 
 // Components
 import { LoginComponent } from './auth/login/login.component';
@@ -35,6 +35,9 @@ import { SingleExpenseComponent } from './expenses/single-expense/single-expense
 import { TotalComponent } from './expenses/total/total.component';
 import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
 import { FrenchDatePipe } from './shared/pipes/french-date.pipe';
+import { GraphComponent } from './expenses/graph/graph.component';
+import { LastExpenseComponent } from './expenses/last-expense/last-expense.component';
+import { TableExpensesComponent } from './expenses/table-expenses/table-expenses.component';
 import { GetCategoryNamePipe } from './shared/pipes/get-category-name.pipe';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
@@ -58,6 +61,9 @@ import { DarkModeComponent } from './dark-mode/dark-mode.component';
     TotalComponent,
     ResetPasswordComponent,
     FrenchDatePipe,
+    GraphComponent,
+    LastExpenseComponent,
+    TableExpensesComponent,
     DarkModeComponent,
     GetCategoryNamePipe
   ],
@@ -75,9 +81,9 @@ import { DarkModeComponent } from './dark-mode/dark-mode.component';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

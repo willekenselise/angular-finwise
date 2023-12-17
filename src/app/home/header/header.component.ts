@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.userService.getUser().subscribe((user) => {
-      this.fullName = user || 'Profile';
+      this.fullName = user || 'Profil';
     });
   }
 

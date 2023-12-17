@@ -1,12 +1,27 @@
 <div class="col-md-9">
   <section>
-    <app-total></app-total>
-    <div class="home-section-header">
+    <div class="card-container">
+      <app-total></app-total>
+      <app-expense-graph></app-expense-graph>
+    </div>
+
+    <div class="header">
       <h2>Catégories</h2>
-      <button class="button-all-datas" (click)="navigateToCategories()"  [class.dark-mode]="isDarkMode$ | async">
-        voir tout
+      <button
+        class="button"
+        (click)="navigateToCategories()"
+        [class.dark-mode]="isDarkMode$ | async"
+      >
+        voir plus
+        <mat-icon
+          class="icon-action"
+          aria-hidden="false"
+          aria-label="arrow_forward icon"
+          fontIcon="arrow_forward"
+        ></mat-icon>
       </button>
     </div>
+
     <div class="card-container">
       <mat-card
         *ngFor="let expense of firstThreeCategories; let i = index"
@@ -24,60 +39,7 @@
         </mat-card-header>
       </mat-card>
     </div>
-  </section>
 
-  <section>
-    <div class="home-section-header">
-      <h2>Dépenses récentes</h2>
-      <button class="button-all-datas" (click)="navigateToExpenses()"  [class.dark-mode]="isDarkMode$ | async">
-        voir tout
-      </button>
-    </div>
-    <table class="table" [class.dark-mode-table]="isDarkMode$ | async">
-      <thead>
-        <tr>
-          <th>Transaction</th>
-          <th>Montant</th>
-          <th>Date</th>
-          <th>Description</th>
-		  <th>Catégories</th>
-          <th>Type</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let expense of latestFiveExpenses">
-          <td>{{ expense.transactionName }}</td>
-          <td>
-            {{ expense.transactionNature === "débit" ? "-" : "+" }}
-            {{ expense.amount }} €
-          </td>
-          <td>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</td>
-          <td>{{ expense.description }}</td>
-		  <td>
-			{{ expense.categoryId | getCategoryName  | async}}
-		  </td>
-          <td>
-            <div>
-              <td
-                [class.depense]="expense.transactionNature === 'débit'"
-                [class.credit]="expense.transactionNature === 'crédit'"
-              >
-                {{ expense.transactionNature }}
-              </td>
-            </div>
-          </td>
-          <td>
-            <mat-icon
-              class="icon-action"
-              (click)="navigateToExpenseSingle(expense.uid)"
-              aria-hidden="false"
-              aria-label="visibility icon"
-              fontIcon="visibility"
-            ></mat-icon>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <app-last-expense></app-last-expense>
   </section>
 </div>

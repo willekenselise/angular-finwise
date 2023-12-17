@@ -1,48 +1,48 @@
 
 <main>
     <form [formGroup]="registerForm">
-        <h1>Register here</h1>
+        <h1>Inscris toi ici</h1>
         <mat-form-field>
-            <mat-label>LastName</mat-label>
-            <input type="text" matInput placeholder="LastName" formControlName="lastName">
+            <mat-label>Nom de Famille</mat-label>
+            <input type="text" matInput placeholder="Nom de Famille" formControlName="lastName">
             <mat-error *ngIf="registerForm.get('lastName')!.hasError('required')">
-                LastName is required
+                Nom de Famille obligatoire
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>FirstName</mat-label>
-            <input type="text" matInput placeholder="FirstName" formControlName="firstName">
+            <mat-label>Prénom</mat-label>
+            <input type="text" matInput placeholder="Prénom" formControlName="firstName">
             <mat-error *ngIf="registerForm.get('firstName')!.hasError('required')">
-                FirstName is required
+                Prénom obligatoire
             </mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Email</mat-label>
             <input type="email" matInput placeholder="Ex: moi@example.com" formControlName="email">
             <mat-error *ngIf="registerForm.get('email')!.hasError('required')">
-                Email is required
+                Email obligatoire
             </mat-error>
             <mat-error *ngIf="registerForm.get('email')!.hasError('email')">
-                Email is invalid
+                Email invalide
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input  [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="password">
+            <mat-label>Mot de passe</mat-label>
+            <input  [type]="hide ? 'password' : 'text'" matInput placeholder="Mot de passe" formControlName="password">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="registerForm.get('password')!.hasError('required')">
-                Password is required
+                Mot de passe obligatoire
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Password Confirm</mat-label>
-            <input  [type]="hide ? 'password' : 'text'" matInput placeholder="Password Confirm" formControlName="confirmPassword">
+            <mat-label>Confirmer Mot de passe </mat-label>
+            <input  [type]="hide ? 'password' : 'text'" matInput placeholder="Confirmer Mot de passe" formControlName="confirmPassword">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="registerForm.get('confirmPassword')!.hasError('required')">
-                Password is required
+                Confirmer Mot de passe obligatoire
             </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="signUp()">REGISTER</button>
-        <p class="text-color">You Have an Account? <a routerLink="/login" class="text-color bold">LogIn</a></p>
+        <button mat-raised-button color="primary" (click)="signUp()">S'inscrire</button>
+        <p class="text-color">As-tu un compte? <a routerLink="/login" class="text-color bold">Se connecter</a></p>
     </form>
 </main>

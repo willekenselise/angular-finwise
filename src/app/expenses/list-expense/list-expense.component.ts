@@ -13,7 +13,6 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class ListExpenseComponent implements OnInit {
   constructor(
-    private router: Router,
     private expensesService: ExpensesService,
     private darkModeService: DarkModeService,
   ) {
@@ -28,23 +27,15 @@ export class ListExpenseComponent implements OnInit {
 
   ngOnInit(): void {
     this.expensesService.getExpensesByUserId().subscribe((expenses) => {
-      this.expenses = expenses;
+      this.expenses = expenses.sort((a, b) => {
+        const dateA = new Date(a.transactionDate).getTime();
+        const dateB = new Date(b.transactionDate).getTime();
+        return dateB - dateA;
+      });
     });
   }
 
   toggleAddExpenseVisibility(): void {
     this.isAddExpenseVisible = !this.isAddExpenseVisible;
-  }
-
-  navigateToEditExpense(expense: Expense): void {
-    this.router.navigate(['edit-expense', expense.uid]);
-  }
-
-  deleteExpense(expense: Expense): void {
-    this.expensesService.deleteExpense(expense);
-  }
-
-  navigateToExpenseSingle(expenseId: string): void {
-    this.router.navigate(['/expenses', expenseId]);
   }
 }

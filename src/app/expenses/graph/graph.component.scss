@@ -1,0 +1,28 @@
+.legend {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 2px;
+  display: block;
+
+  &.credit {
+    background-color: #36a2eb;
+  }
+
+  &.debit {
+    background-color: #ff6384;
+  }
+}
+
+.text-legend {
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+}
+
+
+.container {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+}
