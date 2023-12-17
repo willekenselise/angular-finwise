@@ -13,16 +13,15 @@ import { Category } from '../models/category';
 export class HomeComponent implements OnInit {
   firstThreeCategories$: any;
   tabColor = ['#b871ffb1', '#ee7fab9c', "#edb949c9"]
+  latestFiveExpenses: Expense[] = [];
+  firstThreeCategories: { cat: Category; totalAmount: string }[] = [];
+  totalAmount = 0;
 
   constructor(
     private expensesService: ExpensesService,
     private categoriesService: CategoriesService,
     private router: Router
   ) {}
-
-  latestFiveExpenses: Expense[] = [];
-  firstThreeCategories: { cat: Category; totalAmount: string }[] = [];
-  totalAmount = 0;
 
   ngOnInit(): void {
     this.expensesService.getExpensesByUserId().subscribe((expenses: any[]) => {

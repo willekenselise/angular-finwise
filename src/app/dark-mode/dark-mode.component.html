@@ -1,0 +1,6 @@
+
+<label for="darkModeToggle" (click)="$event.preventDefault()">
+    Mode Sombre
+  </label>
+  <input type="checkbox" id="darkModeToggle" [checked]="isDarkMode" (change)="toggleDarkMode()" />
+  
