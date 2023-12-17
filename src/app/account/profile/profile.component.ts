@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { UsersService } from '../services/users.service';
-import { User } from '../models/user';
+import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
+import { User } from '../../models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UploadImageService } from '../services/upload-image.service';
+import { UploadImageService } from '../../services/upload-image.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -17,10 +18,16 @@ export class ProfileComponent implements OnInit{
     pseudo: new FormControl('', Validators.required),
   });
 
+  
+  frmPasswordReset = new FormGroup({
+    email: new FormControl(null, [Validators.required, Validators.email]),
+  });
+
   constructor(
     private authService: AuthService ,
     private userService: UsersService,
-    private imageUploadService: UploadImageService
+    private imageUploadService: UploadImageService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +42,7 @@ export class ProfileComponent implements OnInit{
 
   upadateUserDisplayName(uid: string) {
     const userData = {
-      displayName: this.displayNameFormm.value.pseudo,
+      displayName: this.displayNameFormm.value.pseudo ? this.displayNameFormm.value.pseudo : this.userInformation?.displayName,
       uid : uid
     }
     this.userService.updadteUserDisplayName(userData);
@@ -47,5 +54,16 @@ export class ProfileComponent implements OnInit{
       console.log('Image uploaded successfully. URL:', downloadURL);
       this.userService.updateUserPhoto(this.userInformation, downloadURL)
     });
+  }
+
+  sendPasswordResetRequest() {
+    const email = this.frmPasswordReset.controls['email'].value;
+    this.authService.sendPasswordResetEmail(email).subscribe({
+      next: () => this.snackBar.open('Password reset email sent', 'OK', { duration: 5000 }),
+      error: error => {
+        this.snackBar.open(error.message, 'OK', { duration: 5000 });
+      }
+    });
+
   }
 }

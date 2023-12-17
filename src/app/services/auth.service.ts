@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth , } from '@angular/fire/compat/auth';
 import { BehaviorSubject, Observable, throwError, from } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { fbUser } from '../models/fbUser';
@@ -26,6 +26,9 @@ export class AuthService {
     });
   }
 
+  currentUserData() {
+    return this.auth.currentUser;
+  }
   // ...
 
   get getUserState() : Observable<fbUser | null>{
@@ -63,6 +66,17 @@ export class AuthService {
       return "User not found.";
     }
     return message;
+  }
+
+  sendPasswordResetEmail(email: string| null) {
+    if (!email) {
+      return throwError(() => new Error("Email is required."));
+    }
+    return from(this.auth.sendPasswordResetEmail(email));
+  }
+
+  confirmPasswordReset(code: string, newPassword: string) {
+    return from(this.auth.confirmPasswordReset(code, newPassword));
   }
 }
 
