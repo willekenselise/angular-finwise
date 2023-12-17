@@ -36,4 +36,8 @@ export class ListExpenseComponent implements OnInit {
   deleteExpense(expense: Expense): void {
     this.expensesService.deleteExpense(expense);
   }
+
+  navigateToExpenseSingle(expenseId: string): void {
+    this.router.navigate(['/expenses', expenseId]);
+  }
 }

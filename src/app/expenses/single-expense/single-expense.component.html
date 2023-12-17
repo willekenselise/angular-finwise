@@ -1,0 +1,7 @@
+<div *ngIf="expense">
+  <p>{{ expense.categoryId }}</p>
+  <h2>{{ expense.description }}</h2>
+  <p>{{ expense.amount }}€</p>
+  <p>{{ expense.transactionNature }}</p>
+  <p>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</p>
+</div>

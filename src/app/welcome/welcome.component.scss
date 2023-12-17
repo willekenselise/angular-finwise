@@ -1,0 +1,48 @@
+main {
+    background: hsla(12, 84%, 68%, 1);
+  
+    background: linear-gradient(
+      90deg,
+      hsla(12, 84%, 68%, 1) 0%,
+      hsla(343, 100%, 66%, 1) 100%
+    );
+  
+    background: -moz-linear-gradient(
+      90deg,
+      hsla(12, 84%, 68%, 1) 0%,
+      hsla(343, 100%, 66%, 1) 100%
+    );
+  
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+  }
+  
+  h1 {
+    margin-bottom: 32px;
+    font-family: "Lilita One", sans-serif;
+    font-size: 4em;
+  }
+  
+  .btn-container {
+    margin: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: white;
+    text-decoration: none;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }

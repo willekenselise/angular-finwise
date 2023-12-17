@@ -1,0 +1,16 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    align-items: center;
+
+    ul{
+        display: flex;
+        list-style: none;
+    }
+
+    .mat-mdc-button:not(:disabled){
+        color: black;
+    }
+}

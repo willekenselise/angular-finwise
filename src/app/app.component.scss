@@ -1,21 +1,26 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    transition: background-color 0.3s ease;
-    background-color: #ffffffbb;
-    border-radius: 25px;
-    color: #333;
-
-    .title {
-        text-align: center;
-        font-size: 40px;
-    }
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: #ffffffbb;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  background-color: #ffffffbb;
+  .title {
+    text-align: center;
+    font-size: 40px;
+    font-family: "Paytone One", sans-serif;
+  }
+}
+.header {
+  padding: 0 32px;
+}
+main {
+  padding: 32px;
 }
 
 .dark-mode {
-    background-color: #333;
-    color: #fff;
-    transition: background-color 0.3s ease;
-  }
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
