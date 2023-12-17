@@ -13,9 +13,6 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class ListExpenseComponent implements OnInit {
   constructor(
-    private expensesService: ExpensesService
-  ) {}
-    private router: Router,
     private expensesService: ExpensesService,
     private darkModeService: DarkModeService,
   ) {

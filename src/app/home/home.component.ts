@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { Expense } from '../models/expense';
-import { ExpensesService } from '../services/expenses.service';
 import { CategoriesService } from '../services/categories.service';
 import { Category } from '../models/category';
 import { Observable, of } from 'rxjs';
@@ -15,22 +12,16 @@ import { DarkModeService } from '../services/dark-mode.service';
 export class HomeComponent implements OnInit {
   isDarkMode$: Observable<boolean>;
   firstThreeCategories$: any;
-  tabColor = ['#b871ffb1', '#ee7fab9c', "#edb949c9"]
-  latestFiveExpenses: Expense[] = [];
+  tabColor = ['#b871ffb1', '#ee7fab9c', '#edb949c9'];
   firstThreeCategories: { cat: Category; totalAmount: string }[] = [];
   totalAmount = 0;
 
   constructor(
-    private expensesService: ExpensesService,
     private categoriesService: CategoriesService,
     private darkModeService: DarkModeService,
     private router: Router
-  ) {}
-
-  firstThreeCategories: { cat: Category; totalAmount: string }[] = [];
-  totalAmount = 0;
   ) {
-    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!; 
+    this.isDarkMode$ = this.darkModeService.darkMode$ || of(false)!;
   }
 
   ngOnInit(): void {
@@ -45,11 +36,6 @@ export class HomeComponent implements OnInit {
       console.error('Error fetching categories:', error);
     }
   }
-
-  navigateToExpenseSingle(expenseId: string): void {
-    this.router.navigate(['/expenses', expenseId]);
-  }
-
   navigateToCategorySingle(categoryId: string): void {
     this.router.navigate(['/categories', categoryId]);
   }

@@ -1,7 +1,11 @@
 <section>
   <div class="list-section-header">
     <h2>Liste des catégories</h2>
-    <button class="button" (click)="toggleAddCategoryVisibility()" [class.dark-mode]="isDarkMode$ | async">
+    <button
+      class="button"
+      (click)="toggleAddCategoryVisibility()"
+      [class.dark-mode]="isDarkMode$ | async"
+    >
       <mat-icon
         class="icon-action"
         aria-hidden="false"
@@ -9,7 +13,7 @@
         fontIcon="add"
       ></mat-icon>
       ajouter
-
+    </button>
   </div>
 
   <app-add-category *ngIf="isAddCategoryVisible"></app-add-category>
@@ -29,7 +33,6 @@
           category.cat.name
         }}</mat-card-title>
         <div class="card-action">
-
           <mat-icon
             class="icon-action"
             (click)="navigateToCategorySingle(category.cat.uid)"
