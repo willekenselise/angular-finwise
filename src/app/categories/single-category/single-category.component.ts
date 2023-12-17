@@ -38,7 +38,6 @@ export class SingleCategoryComponent implements OnInit {
         .subscribe((category) => {
           this.category = category;
 
-          // Appel de la méthode pour récupérer les dépenses par catégorie
           this.expensesService
             .getExpensesByCategory(categoryId)
             .subscribe((expenses) => {

@@ -1,0 +1,44 @@
+.expense-details {
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.name {
+  font-size: 48px;
+  margin-top: 5px;
+}
+
+.amount {
+  font-size: 20px;
+  margin-top: 5px;
+  font-size: 4em;
+}
+
+.transaction-nature {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.transaction-date {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #888;
+}
+
+.buttons-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

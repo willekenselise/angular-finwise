@@ -1,7 +1,35 @@
-<div *ngIf="expense">
-  <p>{{ expense.categoryId }}</p>
-  <h2>{{ expense.description }}</h2>
-  <p>{{ expense.amount }}€</p>
-  <p>{{ expense.transactionNature }}</p>
-  <p>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</p>
+<div class="expense-details" *ngIf="expense">
+  <div>
+    <p class="amount">
+      {{ expense.transactionNature === "débit" ? "+" : "-" }}
+      {{ expense.amount }}€
+    </p>
+  </div>
+  <div>
+    <h2 class="name">{{ expense.transactionName }}</h2>
+    <h2 class="description">{{ expense.description }}</h2>
+    <p class="transaction-date">
+      {{ expense.transactionDate | date : "dd MMMM yyyy" }}
+    </p>
+    <div class="buttons-wrapper">
+      <button class="button" (click)="navigateToEditExpense(expense)">
+        <mat-icon
+          class="icon-action"
+          aria-hidden="false"
+          aria-label="edit icon"
+          fontIcon="edit"
+        ></mat-icon>
+        modifier
+      </button>
+      <button class="button" (click)="deleteExpense(expense)">
+        <mat-icon
+          class="icon-action"
+          aria-hidden="false"
+          aria-label="delete icon"
+          fontIcon="delete"
+        ></mat-icon>
+        supprimer
+      </button>
+    </div>
+  </div>
 </div>

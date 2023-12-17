@@ -13,36 +13,35 @@
       <div class="user-info">
         <!-- User's Name -->
         <h1>
-          {{(user.displayName) ? user.displayName : 'User'}}
+          {{(user.displayName) ? user.displayName : 'Utilisateur'}}
         </h1>
       </div>
     </div>
     <div class="profile-actions">
         <form class="form-style" [formGroup]="frmPasswordReset" (submit)="sendPasswordResetRequest()">
-          <h2>Password Reset</h2>
+          <h2>Réinitialiser le mot de passe</h2>
           <mat-form-field>
             <mat-label>Email</mat-label>
             <input type="email" matInput placeholder="Ex: moi@example.com" formControlName="email">
             <mat-error *ngIf="frmPasswordReset.get('email')!.hasError('required')">
-              Email is required
+              Email est obligatoire
             </mat-error>
             <mat-error *ngIf="frmPasswordReset.get('email')!.hasError('email')">
-              Email is invalid
+              Email est invalid
             </mat-error>
           </mat-form-field>
           <button mat-raised-button color="primary" [disabled]="frmPasswordReset.invalid">
-            send
+            Enregistrer
             <mat-icon>send</mat-icon>
           </button>
         </form>
         <form class="form-style name-form" [formGroup]="displayNameFormm" (ngSubmit)="upadateUserDisplayName(user.uid)">
-          <h2>Update Display Name</h2>
+          <h2>Modfier nom</h2>
           <mat-form-field class="name-field">
-            <input type="text" matInput placeholder="Enter name" formControlName="pseudo" />
-            <mat-icon>person</mat-icon>
+            <input type="text" matInput placeholder="Nom" formControlName="pseudo" />
           </mat-form-field>
           <button mat-raised-button color="primary" [disabled]="frmPasswordReset.invalid">
-            send
+            Enregistrer
             <mat-icon>send</mat-icon>
           </button>
         </form>

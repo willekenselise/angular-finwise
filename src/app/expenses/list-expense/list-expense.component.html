@@ -1,62 +1,16 @@
 <section>
-
   <div class="list-section-header">
     <h2>Liste des transactions</h2>
-    <button class="button-add-datas" (click)="toggleAddExpenseVisibility()">
-      + ajouter
+    <button class="button" (click)="toggleAddExpenseVisibility()">
+      <mat-icon
+        class="icon-action"
+        aria-hidden="false"
+        aria-label="add icon"
+        fontIcon="add"
+      ></mat-icon>
+      ajouter
     </button>
   </div>
-
   <app-add-expense *ngIf="isAddExpenseVisible"></app-add-expense>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Transaction</th>
-        <th>Montant</th>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let expense of expenses">
-        <td>{{ expense.transactionName }}</td>
-        <td>{{ expense.amount }} €</td>
-        <td>{{ expense.transactionDate | date : "dd MMMM yyyy" }}</td>
-        <td>{{ expense.transactionDate | frenchDate }}</td>
-        <td>{{ expense.description }}</td>
-        <td
-          [class.depense]="expense.transactionNature === 'débit'"
-          [class.credit]="expense.transactionNature === 'crédit'"
-        >
-          {{ expense.transactionNature }}
-        </td>
-        <td class="card-action">
-          <mat-icon
-            class="icon-action"
-            (click)="navigateToExpenseSingle(expense.uid)"
-            aria-hidden="false"
-            aria-label="visibility icon"
-            fontIcon="visibility"
-          ></mat-icon>
-          <mat-icon
-            class="icon-action"
-            (click)="deleteExpense(expense)"
-            aria-hidden="false"
-            aria-label="delete icon"
-            fontIcon="delete_outline"
-          ></mat-icon>
-          <mat-icon
-            class="icon-action"
-            (click)="navigateToEditExpense(expense)"
-            aria-hidden="false"
-            aria-label="edit icon"
-            fontIcon="edit"
-          ></mat-icon>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <app-table-expenses [expenses]="expenses"></app-table-expenses>
 </section>

@@ -1,56 +1,79 @@
 html {
-    margin: 0;
-    height: 100%;
-    background: rgb(255, 216, 191);
-    background: linear-gradient(90deg, rgba(255, 216, 191, 0.9836309523809523) 0%, rgba(255, 232, 236, 1) 50%, rgba(249, 217, 255, 1) 100%);
+  margin: 0;
+  height: 100%;
+  background: rgb(255, 216, 191);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 216, 191, 0.9836309523809523) 0%,
+    rgba(255, 232, 236, 1) 50%,
+    rgba(249, 217, 255, 1) 100%
+  );
 }
 
-body{
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    height: calc(100% - 60px);
-    padding: 30px;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: calc(100% - 60px);
+  padding: 30px;
 }
 
 .table {
-    width: 100%;
-    background-color: #fff;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    overflow-x: auto;
-  }
-  
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.table th,
+.table td {
+  padding: 20px;
+  text-align: left;
+}
+
+@media screen and (max-width: 768px) {
   .table th,
   .table td {
-    padding: 20px;
-    text-align: left;
+    display: block;
+    text-align: center;
+    padding: 10px;
   }
-  
-  @media screen and (max-width: 768px) {
-    .table th,
-    .table td {
-      display: block;
-      text-align: center;
-      padding: 10px;
-    }
-  
-    .table tbody tr {
-      margin-bottom: 15px;
-      text-align: center;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
-      align-items: center;
-      gap: 10px;
-    }
-  
-    .table tbody tr td {
-      border-bottom: none;
-    }
-  
-    .table thead,
-    .table tbody td:nth-child(4) {
-      display: none;
-    }
+
+  .table tbody tr {
+    margin-bottom: 15px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    gap: 10px;
   }
+
+  .table tbody tr td {
+    border-bottom: none;
+  }
+
+  .table thead,
+  .table tbody td:nth-child(4) {
+    display: none;
+  }
+}
+
+.button {
+  font-weight: 600;
+  background-color: transparent;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2d2d2d;
+  cursor: pointer;
+  border: 2px solid #2d2d2d;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #2d2d2d;
+    color: #fff;
+  }
+}

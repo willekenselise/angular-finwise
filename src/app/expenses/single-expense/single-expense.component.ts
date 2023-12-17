@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Expense } from '../../models/expense';
 import { ExpensesService } from '../../services/expenses.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-expense',
@@ -13,6 +13,7 @@ export class SingleExpenseComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private expensesService: ExpensesService
   ) {}
 
@@ -26,9 +27,15 @@ export class SingleExpenseComponent {
     if (expenseId) {
       this.expensesService.getExpenseById(expenseId).subscribe((expense) => {
         this.expense = expense;
-        console.log(expense);
-        
       });
     }
+  }
+
+  navigateToEditExpense(expense: Expense): void {
+    this.router.navigate(['edit-expense', expense.uid]);
+  }
+
+  deleteExpense(expense: Expense): void {
+    this.expensesService.deleteExpense(expense);
   }
 }

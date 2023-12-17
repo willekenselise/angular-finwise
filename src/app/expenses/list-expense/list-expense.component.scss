@@ -7,43 +7,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  .button-add-datas {
-    font-weight: 900;
-    font-size: 15px;
-    background-color: transparent;
-    color: #2d2d2d;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-}
-
-.credit,
-.depense {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  color: inherit;
-  border-radius: 5px;
-}
-
-.credit {
-  background-color: rgba(0, 128, 0, 0.3);
-  color: green;
-}
-
-.depense {
-  background-color: rgba(255, 0, 0, 0.3);
-  color: red;
-}
-
-.mat-mdc-card-header {
-  padding: 0px 16px;
-}
-
-.icon-action {
-  margin-right: 15px;
-  cursor: pointer;
 }

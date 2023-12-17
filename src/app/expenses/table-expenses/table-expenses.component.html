@@ -1,0 +1,54 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Transaction</th>
+        <th>Montant</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let expense of expenses">
+        <td>{{ expense.transactionName }}</td>
+        <td
+          [class.depense]="expense.transactionNature === 'débit'"
+          [class.credit]="expense.transactionNature === 'crédit'"
+        >
+          <mat-icon
+            aria-hidden="false"
+            aria-label="visibility icon"
+            [fontIcon]="
+              expense.transactionNature === 'débit' ? 'remove' : 'add'
+            "
+          ></mat-icon>
+          {{ expense.amount }} €
+        </td>
+        <td>{{ expense.transactionDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ expense.description }}</td>
+        <td class="actions">
+          <mat-icon
+            class="icon-action"
+            (click)="navigateToExpenseSingle(expense)"
+            aria-hidden="false"
+            aria-label="visibility icon"
+            fontIcon="visibility"
+          ></mat-icon>
+          <mat-icon
+            class="icon-action"
+            (click)="navigateToEditExpense(expense)"
+            aria-hidden="false"
+            aria-label="visibility icon"
+            fontIcon="edit"
+          ></mat-icon>
+          <mat-icon
+            class="icon-action"
+            (click)="deleteExpense(expense)"
+            aria-hidden="false"
+            aria-label="visibility icon"
+            fontIcon="delete"
+          ></mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>

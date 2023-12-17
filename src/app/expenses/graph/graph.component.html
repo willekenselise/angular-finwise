@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <h3>Répartition des Transactions</h3>
+    <svg width="200" height="200">
+      <circle
+        cx="100"
+        cy="100"
+        r="50"
+        [attr.stroke]="getCircleColor('crédit')"
+        stroke-width="40"
+        fill="transparent"
+      ></circle>
+      <circle
+        *ngIf="totalDebits > 0"
+        cx="100"
+        cy="100"
+        r="50"
+        [attr.stroke]="getCircleColor('débit')"
+        [attr.stroke-width]="40"
+        [attr.stroke-dasharray]="getDashArray('débit')"
+        fill="transparent"
+      ></circle>
+    </svg>
+  </div>
+  <div>
+    <p class="text-legend"><span class="legend credit"></span>Crédit</p>
+    <p class="text-legend"><span class="legend debit"></span>Dépenses</p>
+  </div>
+</div>

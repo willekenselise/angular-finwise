@@ -14,7 +14,6 @@ export class TotalComponent {
   total: number = 0;
   expenses: Expense[] = [];
   constructor(
-    private router: Router,
     private expensesService: ExpensesService
   ) {}
 

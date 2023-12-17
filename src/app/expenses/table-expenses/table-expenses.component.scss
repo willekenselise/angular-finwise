@@ -1,0 +1,37 @@
+.credit,
+.depense {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 5px;
+
+  .mat-icon {
+    border-radius: 16px;
+  }
+}
+
+.credit > .mat-icon {
+  color: green;
+  background-color: rgb(202, 235, 202);
+}
+
+.depense > .mat-icon {
+  color: red;
+  background-color: rgb(255, 233, 236);
+}
+
+.mat-mdc-card-header {
+  padding: 0px 16px;
+}
+
+.actions{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .mat-icon {
+        cursor: pointer;
+    }
+}
