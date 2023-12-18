@@ -1,6 +1,7 @@
 # Expense Tracker App : FinWise 
 
 This is a simple expense tracker application that helps you keep track of your expenses. Currently, the app supports authentication.
+We deployed the website on the following link : [FinWise](https://angular-finwise.vercel.app/)
 
 #### Created by Chelsey MILO, Elise WILLEKENS & Maanuja SUTHARSAN
 
